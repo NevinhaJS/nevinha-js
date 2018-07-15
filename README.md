@@ -15,7 +15,6 @@ Actually we're implementing new features and animations to make this framework m
 </p>
 <p align="center">Create components fast for <b>motion</b> animation.</p>
 
-# NevinhaJS
 
 > 🤔 **What's Missing?**
 > - ...

@@ -17,4 +17,3 @@ class IsomorphicNevinhaComponent {
 }
 
 export {IsomorphicNevinhaComponent};
-export default IsomorphicNevinhaComponent;

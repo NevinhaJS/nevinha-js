@@ -1,5 +1,5 @@
-import {updateElement, IsomorphicNevinhaComponent} from './isomorphic';
-import {diffDOM} from './dom/client';
+import {updateElement, IsomorphicNevinhaComponent} from './isomorphic/index';
+import {diffDOM} from './dom/client/index';
 
 class NevinhaComponent extends IsomorphicNevinhaComponent {
 	constructor(props, context) {
@@ -20,4 +20,3 @@ class NevinhaComponent extends IsomorphicNevinhaComponent {
 }
 
 export {NevinhaComponent};
-export default NevinhaComponent;

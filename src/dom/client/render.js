@@ -1,5 +1,5 @@
 import {setProps, updateProps} from './props';
-import {createVirtualElement} from '../../isomorphic';
+import {createVirtualElement} from '../../isomorphic/index';
 
 /**
  * @param {NevinhaClass} component The instance that should rerender.
@@ -63,5 +63,3 @@ export const diffDOM = {
 		);
 	}
 };
-
-export default render;

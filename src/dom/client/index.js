@@ -1,5 +1,5 @@
 import {isEvent} from './events';
-import NevinhaRender, {createTextNode, createInstance, diffDOM} from './render';
+import {render, createTextNode, createInstance, diffDOM} from './render';
 import {
 	isCustomProp,
 	setBooleanProp,
@@ -24,5 +24,5 @@ export {
 	removeProp,
 	updateProp,
 	updateProps,
-	NevinhaRender
+	render
 };
