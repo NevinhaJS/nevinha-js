@@ -50,7 +50,6 @@ class App extends NevinhaComponent {
 		return (
 			<div>
 				<Form />
-
 				<h1>
 					<p>Hello! This is the new: </p>
 					{name}
