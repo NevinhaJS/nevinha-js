@@ -24,8 +24,8 @@ export const setProp = ($el, name, value) => {
 		return setBooleanProp($el, name, value);
 	}
 
-	if(name == 'value'){
-		return $el.value = value;
+	if (name == 'value') {
+		return ($el.value = value);
 	}
 
 	return $el.setAttribute(name, value);

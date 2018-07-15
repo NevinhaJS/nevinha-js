@@ -7,11 +7,11 @@ export const createVirtualElement = (
 ) => {
 	const {type, attributes, children} = node;
 
-	if ((typeof node == 'string') || (typeof node == 'number')) {
+	if (typeof node == 'string' || typeof node == 'number') {
 		return createTextNode(node);
 	}
 
-	if ((typeof type == 'function') && type.prototype.render) {
+	if (typeof type == 'function' && type.prototype.render) {
 		const instance = new type(attributes); // eslint-disable-line
 		const createdElement = createVirtualElement(instance.render(), {
 			createInstance,
@@ -24,7 +24,10 @@ export const createVirtualElement = (
 	}
 
 	if (typeof type == 'function') {
-		return createVirtualElement(type(attributes), {createInstance, createTextNode});
+		return createVirtualElement(type(attributes), {
+			createInstance,
+			createTextNode
+		});
 	}
 
 	if (!children) {
