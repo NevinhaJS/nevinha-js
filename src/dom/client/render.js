@@ -7,12 +7,11 @@ import {createVirtualElement} from '../../isomorphic/index';
  */
 export const render = (Component, $node) => {
 	const instance = new Component();
-	$node.appendChild(
-		createVirtualElement(instance.render(), {
-			createInstance,
-			createTextNode
-		})
-	);
+	instance.element = createVirtualElement(instance.render(), {
+		createInstance,
+		createTextNode
+	});
+	$node.appendChild(instance.element);
 };
 
 export const createTextNode = nodeText => {
