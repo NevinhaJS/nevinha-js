@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --content-base public --inline --hot",
+    "start": "webpack-dev-server --content-base public --inline --hot",
     "format": "prettier-eslint --write 'src/**/*.js'",
     "lint": "eslint src/"
   },
