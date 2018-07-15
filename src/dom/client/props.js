@@ -14,13 +14,21 @@ export const setProps = ($el, props) => {
 export const setProp = ($el, name, value) => {
 	if (isCustomProp(name)) {
 		return;
-	} else if (name === 'className') {
-		$el.setAttribute('class', value);
-	} else if (typeof value === 'boolean') {
-		setBooleanProp($el, name, value);
-	} else {
-		$el.setAttribute(name, value);
 	}
+
+	if (name === 'className') {
+		return $el.setAttribute('class', value);
+	}
+
+	if (typeof value === 'boolean') {
+		return setBooleanProp($el, name, value);
+	}
+
+	if(name == 'value'){
+		return $el.value = value;
+	}
+
+	return $el.setAttribute(name, value);
 };
 
 export const setBooleanProp = ($el, name, value) => {
@@ -50,7 +58,7 @@ export const removeProp = ($el, name, value) => {
 };
 
 export const updateProp = ($el, name, newVal, oldVal) => {
-	if (!newVal) {
+	if (newVal !== '' && !newVal) {
 		removeProp($el, name, oldVal);
 	} else if (!oldVal || newVal !== oldVal) {
 		setProp($el, name, newVal);
