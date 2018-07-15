@@ -24,7 +24,7 @@ export const createVirtualElement = (
 	}
 
 	if (typeof type == 'function') {
-		return createVirtualElement(type(), {createInstance, createTextNode});
+		return createVirtualElement(type(attributes), {createInstance, createTextNode});
 	}
 
 	if (!children) {
