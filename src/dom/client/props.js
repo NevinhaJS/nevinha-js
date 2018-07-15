@@ -1,17 +1,17 @@
 import {isEvent} from './events';
 
-export const setProps = ($el, props) => {
+export const setProps = ($el, props, parentComponent) => {
 	Object.keys(props).forEach(prop => {
 		if (isEvent(prop)) {
 			const eventName = prop.split('on')[1].toLowerCase();
 			$el.addEventListener(eventName, props[prop]);
 		} else {
-			setProp($el, prop, props[prop]);
+			setProp($el, prop, props[prop], parentComponent);
 		}
 	});
 };
 
-export const setProp = ($el, name, value) => {
+export const setProp = ($el, name, value, parentComponent) => {
 	if (isCustomProp(name)) {
 		return;
 	}
@@ -57,19 +57,36 @@ export const removeProp = ($el, name, value) => {
 	}
 };
 
-export const updateProp = ($el, name, newVal, oldVal) => {
+export const updateProp = ($el, name, newVal, oldVal, parentComponent) => {
 	if (newVal !== '' && !newVal) {
-		removeProp($el, name, oldVal);
-	} else if (!oldVal || newVal !== oldVal) {
-		setProp($el, name, newVal);
+		return removeProp($el, name, oldVal);
+	}
+
+	if (!oldVal || newVal !== oldVal) {
+		return setProp($el, name, newVal, parentComponent);
 	}
 };
 
-export const updateProps = ($target, newProps, oldProps = {}) => {
+export const updateProps = (
+	$target,
+	newProps,
+	oldProps = {},
+	parentComponent
+) => {
 	const props = Object.assign({}, newProps, oldProps);
 
+	if (!newProps.ref && oldProps.ref) {
+		removeContextRef(parentComponent, oldProps.ref);
+	}
+
 	Object.keys(props).forEach(name => {
-		updateProp($target, name, newProps[name], oldProps[name]);
+		updateProp(
+			$target,
+			name,
+			newProps[name],
+			oldProps[name],
+			parentComponent
+		);
 	});
 };
 
