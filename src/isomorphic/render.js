@@ -3,7 +3,7 @@
  */
 export const createVirtualElement = (
 	node,
-	{createTextNode, createInstance}
+	{createTextNode, createInstance, parentComponent}
 ) => {
 	const {type, attributes, children} = node;
 
@@ -15,7 +15,8 @@ export const createVirtualElement = (
 		const instance = new type(attributes); // eslint-disable-line
 		const createdElement = createVirtualElement(instance.render(), {
 			createInstance,
-			createTextNode
+			createTextNode,
+			parentComponent: instance
 		});
 
 		instance.element = createdElement;
@@ -34,5 +35,5 @@ export const createVirtualElement = (
 		return;
 	}
 
-	return createInstance(type, attributes, children);
+	return createInstance(type, attributes, children, parentComponent);
 };
