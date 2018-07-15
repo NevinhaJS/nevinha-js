@@ -5,6 +5,11 @@
 	"main": "dist/nevinha.cjs.js",
 	"module": "dist/nevinha.esm.js",
 	"license": "MIT",
+	"repository": "nevinhajs/nevinha-js",
+	"keywords": [
+		"nevinhajs",
+		"nevinha-js"
+	],
 	"scripts": {
 		"build": "BABEL_ENV=dev rollup -c",
 		"dev": "BABEL_ENV=dev rollup -c -w",
