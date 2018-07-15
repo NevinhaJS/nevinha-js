@@ -36,10 +36,40 @@ With a bundler module as a [rollup](https://rollupjs.org/) or [webpack](https://
 
 ```javascript
 // using ES6 modules
-import Nevinha from 'nevinhajs'
+import {NevinhaComponent, render} from 'nevinha-js';
 
-// using CommonJS modules
-var Nevinha = require('nevinhajs')
+class App extends NevinhaComponent {
+	constructor(){
+		super();
+		this.state.name = "NevinhaJS"
+	}
+
+	render() {
+		const {name} = this.state;
+
+		return (
+			<div>
+				<Form />
+
+				<h1>
+					<p>Hello! This is the new: </p>
+					{name}
+				</h1>
+			</div>
+		);
+	}
+}
+
+const Form = props => (
+	<div>
+		This is a form made with NevinhaJS
+
+		<input type="text" placeholder="Component name" />
+	</div>
+)
+
+const $root = document.querySelector('#my-app');
+render(App, $root);
 ```
 
 ## Contribute
