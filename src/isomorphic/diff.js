@@ -8,7 +8,7 @@ export const updateElement = (
 	{addToDiff, removeFromDiff, replaceFromDiff, updatePropsFromDiff},
 	index = 0
 ) => {
-	if(typeof newNode.type == 'function' && !isClass(newNode.type)){
+	if (typeof newNode.type == 'function' && !isClass(newNode.type)) {
 		newNode = newNode.type(newNode.attributes);
 	}
 
