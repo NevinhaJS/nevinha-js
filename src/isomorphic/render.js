@@ -7,21 +7,27 @@ export const createVirtualElement = (
 ) => {
 	const {type, attributes, children} = node;
 
-	if (typeof node == 'string') {
+	if ((typeof node == 'string') || (typeof node == 'number')) {
 		return createTextNode(node);
 	}
 
-	if (typeof type == 'function' && type.prototype.render) {
+	if ((typeof type == 'function') && type.prototype.render) {
 		const instance = new type(attributes); // eslint-disable-line
 		const createdElement = createVirtualElement(instance.render(), {
 			createInstance,
 			createTextNode
 		});
+
 		instance.element = createdElement;
+
 		return createdElement;
-	} else if (typeof type == 'function') {
+	}
+
+	if (typeof type == 'function') {
 		return createVirtualElement(type(), {createInstance, createTextNode});
-	} else if (!children) {
+	}
+
+	if (!children) {
 		return;
 	}
 
