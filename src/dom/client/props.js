@@ -58,7 +58,7 @@ export const removeProp = ($el, name, value) => {
 };
 
 export const updateProp = ($el, name, newVal, oldVal) => {
-	if (!newVal) {
+	if (newVal !== '' && !newVal) {
 		removeProp($el, name, oldVal);
 	} else if (!oldVal || newVal !== oldVal) {
 		setProp($el, name, newVal);
