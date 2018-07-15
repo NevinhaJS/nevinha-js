@@ -9,7 +9,8 @@ export const render = (Component, $node) => {
 	const instance = new Component();
 	instance.element = createVirtualElement(instance.render(), {
 		createInstance,
-		createTextNode
+		createTextNode,
+		parentComponent: instance
 	});
 	$node.appendChild(instance.element);
 };
@@ -18,14 +19,16 @@ export const createTextNode = nodeText => {
 	return document.createTextNode(nodeText);
 };
 
-export const createInstance = (nodeType, props, children) => {
+export const createInstance = (nodeType, props, children, parentComponent) => {
 	const $el = document.createElement(nodeType);
-
-	setProps($el, props);
 
 	children
 		.map(node =>
-			createVirtualElement(node, {createInstance, createTextNode})
+			createVirtualElement(node, {
+				createInstance,
+				createTextNode,
+				parentComponent
+			})
 		)
 		.forEach(newNode => {
 			if (newNode) {
@@ -33,13 +36,19 @@ export const createInstance = (nodeType, props, children) => {
 			}
 		});
 
+	setProps($el, props, parentComponent);
+
 	return $el;
 };
 
 export const diffDOM = {
-	addToDiff: ($parent, newNode) => {
+	addToDiff: ($parent, newNode, parentComponent) => {
 		$parent.appendChild(
-			createVirtualElement(newNode, {createInstance, createTextNode})
+			createVirtualElement(newNode, {
+				createInstance,
+				createTextNode,
+				parentComponent
+			})
 		);
 	},
 
@@ -47,18 +56,29 @@ export const diffDOM = {
 		$parent.removeChild($parent.childNodes[index]);
 	},
 
-	replaceFromDiff: ($parent, newNode, _, index) => {
+	replaceFromDiff: ($parent, newNode, _, parentComponent, index) => {
 		$parent.replaceChild(
-			createVirtualElement(newNode, {createInstance, createTextNode}),
+			createVirtualElement(newNode, {
+				createInstance,
+				createTextNode,
+				parentComponent
+			}),
 			$parent.childNodes[index]
 		);
 	},
 
-	updatePropsFromDiff: ($parent, newNode, oldNode, index) => {
+	updatePropsFromDiff: (
+		$parent,
+		newNode,
+		oldNode,
+		parentComponent,
+		index
+	) => {
 		updateProps(
 			$parent.childNodes[index],
 			newNode.attributes,
-			oldNode.attributes
+			oldNode.attributes,
+			parentComponent
 		);
 	}
 };
