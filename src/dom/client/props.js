@@ -1,4 +1,5 @@
 import {isEvent} from './events';
+import {removeContextRef, addContextRef} from '../../isomorphic/diff';
 
 export const setProps = ($el, props, parentComponent) => {
 	Object.keys(props).forEach(prop => {
@@ -25,7 +26,13 @@ export const setProp = ($el, name, value, parentComponent) => {
 	}
 
 	if (name == 'value') {
-		return ($el.value = value);
+		return $el.value = value;
+	}
+
+	if (name == 'ref') {
+		return addContextRef(parentComponent, value, {
+			element: $el
+		});
 	}
 
 	return $el.setAttribute(name, value);
