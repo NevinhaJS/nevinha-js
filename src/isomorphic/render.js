@@ -12,7 +12,7 @@ export const createVirtualElement = (
 	}
 
 	if (typeof type == 'function' && type.prototype.render) {
-		const instance = new type(attributes); // eslint-disable-line
+		const instance = new type(attributes, children); // eslint-disable-line
 		const createdElement = createVirtualElement(instance.render(), {
 			createInstance,
 			createTextNode,

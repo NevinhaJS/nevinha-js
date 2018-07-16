@@ -1,8 +1,9 @@
 class IsomorphicNevinhaComponent {
-	constructor(props, context) {
+	constructor(props, children) {
 		this.props = props || {};
-		this.context = context || {};
 		this.state = this.state || {};
+		this.context = {};
+		this.children = children;
 
 		this.componentWillMount();
 	}
