@@ -65,8 +65,8 @@ export const removeContextRef = (parentComponent, ref) => {
 };
 
 export const addContextRef = (parentComponent, ref, value) => {
-	return parentComponent.context[ref] = value;
-}
+	return (parentComponent.context[ref] = value);
+};
 
 /**
  * @param {object} node1 An jsx node to compare changes

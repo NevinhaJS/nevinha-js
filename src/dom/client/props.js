@@ -26,7 +26,7 @@ export const setProp = ($el, name, value, parentComponent) => {
 	}
 
 	if (name == 'value') {
-		return $el.value = value;
+		return ($el.value = value);
 	}
 
 	if (name == 'ref') {
