@@ -29,7 +29,7 @@
 			2,
 			"never"
 		],
-		"indent": [2, "tab", { "SwitchCase": 1 }],
+		"indent": [2, 2],
 		"max-len": 0,
 		"new-cap": [
 			2,

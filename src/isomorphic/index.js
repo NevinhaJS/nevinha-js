@@ -3,8 +3,8 @@ import {updateElement, changed} from './diff';
 import {createVirtualElement} from './render';
 
 export {
-	changed,
-	createVirtualElement,
-	IsomorphicNevinhaComponent,
-	updateElement
+  changed,
+  createVirtualElement,
+  IsomorphicNevinhaComponent,
+  updateElement
 };

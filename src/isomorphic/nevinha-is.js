@@ -1,3 +1,3 @@
 export const isClass = func => {
-	return func.prototype.render;
+  return func.prototype.render;
 };
