@@ -15,4 +15,7 @@ export const isCustomProp = propName => {
 
   return true;
 };
+
+export const hasCustomProp = (props = {}) => {
+  return Object.keys(definedMotionsProps).filter(key => props[key]).length;
 };
