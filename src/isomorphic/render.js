@@ -2,38 +2,38 @@
  * @param {object} node The object that will be parsed to htmlNode with it respective children
  */
 export const createVirtualElement = (
-	node,
-	{createTextNode, createInstance, parentComponent}
+  node,
+  {createTextNode, createInstance, parentComponent}
 ) => {
-	const {type, attributes, children} = node;
+  const {type, attributes, children} = node;
 
-	if (typeof node == 'string' || typeof node == 'number') {
-		return createTextNode(node);
-	}
+  if (typeof node == 'string' || typeof node == 'number') {
+    return createTextNode(node);
+  }
 
-	if (typeof type == 'function' && type.prototype.render) {
+  if (typeof type == 'function' && type.prototype.render) {
 		const instance = new type(attributes, children); // eslint-disable-line
-		const createdElement = createVirtualElement(instance.render(), {
-			createInstance,
-			createTextNode,
-			parentComponent: instance
-		});
+    const createdElement = createVirtualElement(instance.render(), {
+      createInstance,
+      createTextNode,
+      parentComponent: instance
+    });
 
-		instance.element = createdElement;
+    instance.element = createdElement;
 
-		return createdElement;
-	}
+    return createdElement;
+  }
 
-	if (typeof type == 'function') {
-		return createVirtualElement(type(attributes), {
-			createInstance,
-			createTextNode
-		});
-	}
+  if (typeof type == 'function') {
+    return createVirtualElement(type(attributes), {
+      createInstance,
+      createTextNode
+    });
+  }
 
-	if (!children) {
-		return;
-	}
+  if (!children) {
+    return;
+  }
 
-	return createInstance(type, attributes, children, parentComponent);
+  return createInstance(type, attributes, children, parentComponent);
 };
