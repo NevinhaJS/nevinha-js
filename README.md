@@ -81,6 +81,7 @@ class App extends NevinhaComponent {
     );
   }
 }
+```
 
 You can see more details of how to use NevinhaJs in the [Nevinha Js Examples repo](https://github.com/NevinhaJS/nevinha-js-examplesZ)
 
