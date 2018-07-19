@@ -1,5 +1,7 @@
 import {isEvent} from './events';
+import {isCustomProp} from '../../isomorphic/nevinha-is';
 import {removeContextRef, addContextRef} from '../../isomorphic/diff';
+import {definedMotionsProps} from '../../motions/index';
 
 export const setProps = ($el, props, parentComponent) => {
   Object.keys(props).forEach(prop => {
@@ -13,8 +15,8 @@ export const setProps = ($el, props, parentComponent) => {
 };
 
 export const setProp = ($el, name, value, parentComponent) => {
-  if (isCustomProp(name)) {
-    return;
+  if (isCustomProp(name) && value) {
+    return setCustomProp($el, name, value, parentComponent);
   }
 
   if (name === 'className') {
@@ -97,6 +99,6 @@ export const updateProps = (
   });
 };
 
-export const isCustomProp = () => {
-  return false;
+export const setCustomProp = ($el, name, value) => {
+  return definedMotionsProps[name].callFn($el, value);
 };
