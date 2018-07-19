@@ -3,7 +3,7 @@
  * @param {function} fn The callback function
  * @param {int} delay The delay in milliseconds
  */
-export const requestTimeout = function(fn, delay=1) {
+export const requestTimeout = function(fn, delay = 1) {
   if (
     !window.requestAnimationFrame &&
 		!window.webkitRequestAnimationFrame &&
@@ -23,7 +23,7 @@ export const requestTimeout = function(fn, delay=1) {
     const delta = current - start;
 
     delta >= delay ? fn() : requestAnimationFrame(animationLoop);
-  }
+  };
 
   requestAnimationFrame(animationLoop);
 };

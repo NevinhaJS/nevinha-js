@@ -15,11 +15,11 @@ export const setFadeOut = ($el, values) => {
   const speed = getValue(values, 'speed', FADE_OUT_MOTION);
   const timingFn = getValue(values, 'timingFn', FADE_IN_MOTION);
 
-  requestTimeout(()=> setTypedStyle($el, 'display', 'none'), speed * 1000);
+  requestTimeout(() => setTypedStyle($el, 'display', 'none'), speed * 1000);
 
   setTransition($el, 'opacity', speed, timingFn);
 
-  requestTimeout(() =>  setTypedStyle($el, 'opacity', 0));
+  requestTimeout(() => setTypedStyle($el, 'opacity', 0));
 };
 
 export const setFadeIn = ($el, values) => {
@@ -30,14 +30,14 @@ export const setFadeIn = ($el, values) => {
   setTypedStyle($el, 'opacity', 0);
   setTransition($el, 'opacity', speed, timingFn);
 
-  requestTimeout(()=> setTypedStyle($el, 'opacity', 1), 0);
+  requestTimeout(() => setTypedStyle($el, 'opacity', 1), 0);
 };
 
-export const setHide = ($el) => {
+export const setHide = $el => {
   setTypedStyle($el, 'display', 'none');
 };
 
-export const setShow = ($el) => {
+export const setShow = $el => {
   setTypedStyle($el, 'display', 'inherit');
 };
 
