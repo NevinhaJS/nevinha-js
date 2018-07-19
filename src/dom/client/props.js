@@ -1,7 +1,7 @@
 import {isEvent} from './events';
 import {isCustomProp} from '../../isomorphic/nevinha-is';
 import {removeContextRef, addContextRef} from '../../isomorphic/diff';
-import {definedMotionsProps} from '../../motions/index';
+import {definedMotionsProps, setTypedStyle} from '../../motions/index';
 
 export const setProps = ($el, props, parentComponent) => {
   Object.keys(props).forEach(prop => {
@@ -99,6 +99,27 @@ export const updateProps = (
   });
 };
 
+export const setStyleProps = ($el, value) => {
+  const values = value.split(';');
+
+  if(!values[values.length-1].trim()) {
+    values.splice(-1,1);
+  }
+
+  const stylesMap = values.map(cssValue => {
+    const splitedValue = cssValue.split(':');
+
+    return {
+      property: splitedValue[0].trim(),
+      value: splitedValue[1].trim()
+    };
+  });
+
+  stylesMap.forEach(style => setTypedStyle($el, style.property, style.value))
+}
+
 export const setCustomProp = ($el, name, value) => {
+  if(name == 'style') return setStyleProps($el, value);
+
   return definedMotionsProps[name].callFn($el, value);
 };
