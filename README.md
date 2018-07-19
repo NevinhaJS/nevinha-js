@@ -85,6 +85,8 @@ class App extends NevinhaComponent {
 
 You can see more details of how to use NevinhaJs in the [Nevinha Js Examples repo](https://github.com/NevinhaJS/nevinha-js-examples)
 
+**We are taking care with the browser animations performance and we are allways following the google developers documentation and developers group to ensure our performance compatibility**
+
 ## Contribute
 
 First of all, thank you for your contribution. If you want to contribute, feel free to search for [open issues](../../issues) or our [project roadmap](../..//projects/1), we have a lot of work to do, and of course we'll need you.
