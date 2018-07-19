@@ -6,7 +6,7 @@ NevinhaJS is a component render based in [React](https://reactjs.org/) but beyon
 
 > 🚨 Importants Notes
 > - **NevinhaJS uses the virtual DOM as base of  their diff.**
-> - **NevinhaJS uses CSS Typed OM API, wich improves arround 30% of your browser css manipulations performance. You can see more details in this [google article](https://developers.google.com/web/updates/2018/03/cssom#customprops)**
+> - **NevinhaJS uses CSS Typed OM API, wich improves arround 30% of the performance of your browser css manipulations. You can see more details in this [google article](https://developers.google.com/web/updates/2018/03/cssom#customprops)**
 > - **We aren't another framework and no, we don't do the samething like react does. We are a component framework (like react) but our focus is to make the development of animations or transitions easier**
 
 Actually we're implementing new features and animations to make this framework more powerfull and sexy for using it in your projects.
@@ -48,37 +48,41 @@ With a bundler module as a [rollup](https://rollupjs.org/) or [webpack](https://
 import {NevinhaComponent, render} from 'nevinha-js';
 
 class App extends NevinhaComponent {
-	constructor(){
-		super();
-		this.state.name = "NevinhaJS"
-	}
+  constructor(){
+    super();
+    this.state.name = "NevinhaJS"
+  }
 
-	render() {
-		const {name} = this.state;
+  customEvent(){
+    console.log('this is a custom event')
+  }
 
-		return (
-			<div>
-				<Form />
-				<h1>
-					<p>Hello! This is the new: </p>
-					{name}
-				</h1>
-			</div>
-		);
-	}
+  render() {
+    const {name} = this.state;
+    const {customEvent} = this.props;
+
+    return (
+      <div>
+          <SomeNevinhaComponent />
+
+          <AnotherComponent>
+            <p>Don't forget to declare this component, because it wasn't declared yet</p>
+          </AnotherComponent>
+
+          // Yeah it has some effects inside our architecture,
+          // you just need to call the effect name  😉
+          <h1 fadeIn>
+            <p>Hello! This is the new: {name}</p>
+            {name}
+          </h1>
+
+          <AnotherComponentWithProps myEvent={customEvent} myProp="anything" />
+      </div>
+    );
+  }
 }
 
-const Form = props => (
-	<div>
-		This is a form made with NevinhaJS
-
-		<input type="text" placeholder="Component name" />
-	</div>
-)
-
-const $root = document.querySelector('#my-app');
-render(App, $root);
-```
+You can see more details of how to use NevinhaJs in the [Nevinha Js Examples repo](https://github.com/NevinhaJS/nevinha-js-examplesZ)
 
 ## Contribute
 
