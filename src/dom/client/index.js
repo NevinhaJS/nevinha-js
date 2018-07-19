@@ -1,7 +1,7 @@
 import {isEvent} from './events';
+import {NevinhaComponent} from './NevinhaComponent';
 import {render, createTextNode, createInstance, diffDOM} from './render';
 import {
-  isCustomProp,
   setBooleanProp,
   setProp,
   setProps,
@@ -15,8 +15,8 @@ export {
   createTextNode,
   createInstance,
   diffDOM,
-  isCustomProp,
   isEvent,
+  NevinhaComponent,
   setBooleanProp,
   setProp,
   setProps,
