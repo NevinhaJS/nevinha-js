@@ -48,37 +48,41 @@ With a bundler module as a [rollup](https://rollupjs.org/) or [webpack](https://
 import {NevinhaComponent, render} from 'nevinha-js';
 
 class App extends NevinhaComponent {
-	constructor(){
-		super();
-		this.state.name = "NevinhaJS"
-	}
+  constructor(){
+    super();
+    this.state.name = "NevinhaJS"
+  }
 
-	render() {
-		const {name} = this.state;
+  customEvent(){
+    console.log('this is a custom event')
+  }
 
-		return (
-			<div>
-				<Form />
-				<h1>
-					<p>Hello! This is the new: </p>
-					{name}
-				</h1>
-			</div>
-		);
-	}
+  render() {
+    const {name} = this.state;
+    const {customEvent} = this.props;
+
+    return (
+      <div>
+          <SomeNevinhaComponent />
+
+          <AnotherComponent>
+            <p>Don't forget to declare this component, because it wasn't declared yet</p>
+          </AnotherComponent>
+
+          // Yeah it has some effects inside our architecture,
+          // you just need to call the effect name  😉
+          <h1 fadeIn>
+            <p>Hello! This is the new: {name}</p>
+            {name}
+          </h1>
+
+          <AnotherComponentWithProps myEvent={customEvent} myProp="anything" />
+      </div>
+    );
+  }
 }
 
-const Form = props => (
-	<div>
-		This is a form made with NevinhaJS
-
-		<input type="text" placeholder="Component name" />
-	</div>
-)
-
-const $root = document.querySelector('#my-app');
-render(App, $root);
-```
+You can see more details of how to use NevinhaJs in the [Nevinha Js Examples repo](https://github.com/NevinhaJS/nevinha-js-examplesZ)
 
 ## Contribute
 
