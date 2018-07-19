@@ -11,9 +11,9 @@ export const isPXUnit = value => {
 export const isNumber = value => typeof value === 'number';
 
 export const isCustomProp = propName => {
-  if (!definedMotionsProps[propName]) return;
+  if (definedMotionsProps[propName]) return true;
 
-  return true;
+  if (propName == 'style') return true;
 };
 
 export const hasCustomProp = (props = {}) => {
