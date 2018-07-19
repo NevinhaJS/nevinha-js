@@ -102,8 +102,8 @@ export const updateProps = (
 export const setStyleProps = ($el, value) => {
   const values = value.split(';');
 
-  if(!values[values.length-1].trim()) {
-    values.splice(-1,1);
+  if (!values[values.length - 1].trim()) {
+    values.splice(-1, 1);
   }
 
   const stylesMap = values.map(cssValue => {
@@ -115,11 +115,11 @@ export const setStyleProps = ($el, value) => {
     };
   });
 
-  stylesMap.forEach(style => setTypedStyle($el, style.property, style.value))
-}
+  stylesMap.forEach(style => setTypedStyle($el, style.property, style.value));
+};
 
 export const setCustomProp = ($el, name, value) => {
-  if(name == 'style') return setStyleProps($el, value);
+  if (name == 'style') return setStyleProps($el, value);
 
   return definedMotionsProps[name].callFn($el, value);
 };
