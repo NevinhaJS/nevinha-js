@@ -21,6 +21,11 @@ Actually we're implementing new features and animations to make this framework m
 
 
 > 🤔 **What's Missing?**
+> - Web Animations API
+> - Parallax animations
+> - Include animations of [All Animation CSS3](http://all-animation.github.io)
+> - Unit tests
+> - Pre-commit tasks
 > - ...
 
 ## Table of Contents
