@@ -3,4 +3,6 @@ export const isClass = func => {
 export const isPXUnit = value => {
   return /px$/.test(value);
 };
+
+export const isNumber = value => typeof value === 'number';
 };
