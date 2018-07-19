@@ -1,3 +1,4 @@
 import {definedMotionsProps} from './dom/motions-props';
+import {setTypedStyle} from './providers/CSSProvider';
 
-export {definedMotionsProps};
+export {definedMotionsProps, setTypedStyle};
