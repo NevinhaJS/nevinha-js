@@ -4,14 +4,15 @@ export const updateElement = (
   parentComponent,
   oldNode,
   {addToDiff, removeFromDiff, replaceFromDiff, updatePropsFromDiff},
-  $parent = parentComponent.element.parentNode,
-  newNode = parentComponent.render(),
+  $parent,
+  newNode,
   index = 0
 ) => {
   if (!oldNode && !newNode) return;
 
-  if (typeof newNode.type == 'function' && !isClass(newNode.type)) {
-    newNode = newNode.type(newNode.attributes);
+  if (newNode && typeof newNode.type == 'function' && !isClass(newNode.type)) {
+    newNode = Object.assign(newNode.type(newNode.attributes));
+    oldNode = Object.assign(oldNode.type(oldNode.attributes));
   }
 
   if (!oldNode) {

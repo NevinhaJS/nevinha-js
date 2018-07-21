@@ -5,6 +5,7 @@ import {isNumber} from '../../isomorphic/nevinha-is';
 const STICKY_MOTION = 'sticky';
 const FADE_OUT_MOTION = 'fadeOut';
 const FADE_IN_MOTION = 'fadeOut';
+const PARALLAX_MOTION = 'parallax';
 
 export const setStickyPosition = ($el, values) => {
   setTypedStyle($el, 'position', STICKY_MOTION);
@@ -41,6 +42,11 @@ export const setShow = $el => {
   setTypedStyle($el, 'display', 'inherit');
 };
 
+export const setParallax = ($el, values) => {
+  const size = getValue(values, 'size', PARALLAX_MOTION);
+  setTypedStyle($el,'transform', `translateZ(${size * (-1)}px)`);
+};
+
 export const definedMotionsProps = {
   fadeIn: {
     callFn: setFadeIn,
@@ -68,6 +74,15 @@ export const definedMotionsProps = {
   },
   hide: {
     callFn: setHide
+  },
+  parallax: {
+    callFn: setParallax,
+    values: {
+      size: {
+        defaultValue: 1,
+        rulesFn: () => [isNumber]
+      }
+    }
   },
   show: {
     callFn: setShow

@@ -1,7 +1,8 @@
 import {isEvent} from './events';
 import {isCustomProp} from '../../isomorphic/nevinha-is';
 import {removeContextRef, addContextRef} from '../../isomorphic/diff';
-import {definedMotionsProps, setTypedStyle} from '../../motions/index';
+import {definedMotionsProps} from '../../motions/dom/motions-props';
+import {setTypedStyle} from '../../motions/providers/CSSProvider';
 
 export const setProps = ($el, props, parentComponent) => {
   Object.keys(props).forEach(prop => {
@@ -67,7 +68,7 @@ export const removeProp = ($el, name, value) => {
 };
 
 export const updateProp = ($el, name, newVal, oldVal, parentComponent) => {
-  if (newVal !== '' && !newVal) {
+  if (typeof newVal == 'undefined' || newVal == null) {
     return removeProp($el, name, oldVal);
   }
 

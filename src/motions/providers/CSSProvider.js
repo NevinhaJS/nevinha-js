@@ -21,7 +21,9 @@ const formatCSSValue = value => {
  */
 export const setTypedStyle = ($el, prop, value) => {
   if (supportTypedOM) {
-    return $el.attributeStyleMap.set(prop, formatCSSValue(value));
+    $el.attributeStyleMap.set(prop, formatCSSValue(value));
+
+    return;
   }
 
   return ($el.style.prop = value);
