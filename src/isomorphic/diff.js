@@ -1,4 +1,6 @@
 import {isClass} from './nevinha-is';
+import {createVirtualElement} from './render';
+import {createTextNode, createInstance} from '../dom/client/render';
 
 export const updateElement = (
   parentComponent,
@@ -10,9 +12,14 @@ export const updateElement = (
 ) => {
   if (!oldNode && !newNode) return;
 
-  if (newNode && typeof newNode.type == 'function' && !isClass(newNode.type)) {
-    newNode = Object.assign(newNode.type(newNode.attributes));
-    oldNode = Object.assign(oldNode.type(oldNode.attributes));
+  if (newNode && typeof newNode.type == 'function') {
+    const {NewNodeComponent, OldNodeComponent} = updateComponentDiff(
+      newNode,
+      oldNode
+    );
+
+    newNode = NewNodeComponent;
+    oldNode = OldNodeComponent;
   }
 
   if (!oldNode) {
@@ -45,6 +52,45 @@ export const updateElement = (
       );
     }
   }
+};
+
+const updateComponentDiff = (NewNodeComponent, OldNodeComponent) => {
+  if (isClass(NewNodeComponent.type)) {
+		const NewNodeInstance = new NewNodeComponent.type( // eslint-disable-line
+      NewNodeComponent.attributes,
+      NewNodeComponent.children
+    );
+		const oldNodeInstance = new OldNodeComponent.type( // eslint-disable-line
+      OldNodeComponent.attributes,
+      OldNodeComponent.children
+    );
+
+    NewNodeInstance.element = createVirtualElement(NewNodeComponent, {
+      createInstance,
+      createTextNode,
+      parentComponent: NewNodeInstance
+    });
+    oldNodeInstance.element = createVirtualElement(OldNodeComponent, {
+      createInstance,
+      createTextNode,
+      parentComponent: oldNodeInstance
+    });
+
+    NewNodeComponent = NewNodeInstance.render();
+    OldNodeComponent = oldNodeInstance.render();
+  } else {
+    NewNodeComponent = Object.assign(
+      NewNodeComponent.type(NewNodeComponent.attributes)
+    );
+    OldNodeComponent = Object.assign(
+      OldNodeComponent.type(OldNodeComponent.attributes)
+    );
+  }
+
+  return {
+    NewNodeComponent,
+    OldNodeComponent
+  };
 };
 
 export const updateContext = (parentComponent, {attributes, children}) => {
