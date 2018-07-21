@@ -6,17 +6,17 @@ import { minify } from 'uglify-es';
 import pkg from './package.json';
 
 export default {
-	entry: 'src/nevinha.js',
-	plugins: [
-		eslint(),
-		babel({
-			exclude: 'node_modules/**',
-		}),
-		uglify({}, minify),
-		filesize()
-	],
-	targets: [
-		{ dest: pkg.main, format: 'cjs' },
-		{ dest: pkg.module, format: 'es' }
-	]
+  entry: 'src/nevinha.js',
+  plugins: [
+    eslint(),
+    babel({
+      exclude: 'node_modules/**',
+    }),
+    uglify({}, minify),
+    filesize()
+  ],
+  targets: [
+    { dest: pkg.main, format: 'cjs' },
+    { dest: pkg.module, format: 'es' }
+  ]
 };
