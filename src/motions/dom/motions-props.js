@@ -44,7 +44,7 @@ export const setShow = $el => {
 
 export const setParallax = ($el, values) => {
   const size = getValue(values, 'size', PARALLAX_MOTION);
-  setTypedStyle($el,'transform', `translateZ(${size * (-1)}px)`);
+  setTypedStyle($el, 'transform', `translateZ(${size * -1}px)`);
 };
 
 export const definedMotionsProps = {

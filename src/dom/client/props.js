@@ -68,6 +68,10 @@ export const removeProp = ($el, name, value) => {
 };
 
 export const updateProp = ($el, name, newVal, oldVal, parentComponent) => {
+  if (isEvent(name)) {
+    return;
+  }
+
   if (typeof newVal == 'undefined' || newVal == null) {
     return removeProp($el, name, oldVal);
   }

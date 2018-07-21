@@ -13,7 +13,13 @@ class NevinhaComponent extends IsomorphicNevinhaComponent {
     const currentElement = this.render();
 
     Object.keys(states).map(key => (this.state[key] = states[key]));
-    updateElement(this, currentElement, diffDOM, this.element.parentNode, this.render());
+    updateElement(
+      this,
+      currentElement,
+      diffDOM,
+      this.element.parentNode,
+      this.render()
+    );
   }
 }
 

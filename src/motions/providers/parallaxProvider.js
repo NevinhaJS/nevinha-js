@@ -11,7 +11,7 @@ class ParallaxProvider extends NevinhaComponent {
     const node = {
       attributes: {
         style: 'perspective: 1px; overflow: auto;',
-        ...props,
+        ...props
       },
       children: [layer],
       type: 'div'
