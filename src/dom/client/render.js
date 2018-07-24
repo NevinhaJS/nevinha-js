@@ -1,5 +1,5 @@
 import {setProps, updateProps} from './props';
-import {createVirtualElement} from '../../isomorphic/index';
+import {createVirtualElement} from '../../isomorphic/isomorphic';
 
 /**
  * @param {NevinhaClass} component The instance that should rerender.

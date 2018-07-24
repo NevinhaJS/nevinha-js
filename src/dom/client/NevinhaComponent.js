@@ -1,8 +1,8 @@
 import {
   updateElement,
   IsomorphicNevinhaComponent
-} from '../../isomorphic/index';
-import {diffDOM} from './index';
+} from '../../isomorphic/isomorphic';
+import {diffDOM} from './client';
 
 class NevinhaComponent extends IsomorphicNevinhaComponent {
   constructor(props, children) {

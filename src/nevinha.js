@@ -1,4 +1,4 @@
-import {NevinhaComponent} from './dom/client/index';
+import {NevinhaComponent} from './dom/client/client';
 import {render} from './dom/client/render';
 import {ParallaxProvider} from './motions/providers/parallaxProvider';
 

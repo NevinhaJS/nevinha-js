@@ -1,4 +1,4 @@
-import {NevinhaComponent} from '../../dom/client/index';
+import {NevinhaComponent} from '../../dom/client/client';
 
 class ParallaxProvider extends NevinhaComponent {
   render() {
