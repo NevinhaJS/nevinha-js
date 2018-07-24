@@ -7,9 +7,9 @@ NevinhaJS is a component render based in [React](https://reactjs.org/) but beyon
 > 🚨 Importants Notes
 > - **NevinhaJS uses the virtual DOM as base of  their diff.**
 > - **NevinhaJS uses CSS Typed OM API, wich improves arround 30% of the performance of your browser css manipulations. You can see more details in this [google article](https://developers.google.com/web/updates/2018/03/cssom#customprops)**
-> - **We aren't another framework and no, we don't do the samething like react does. We are a component framework (like react) but our focus is to make the development of animations or transitions easier**
+> - **We aren't another framework and no, we don't do the same thing like react does. We are a component framework (like react) but our focus is to make the development of animations or transitions easier**
 
-Actually we're implementing new features and animations to make this framework more powerfull and sexy for using it in your projects.
+Actually we're implementing new features and animations to make this framework more powerful and sexy for using it in your projects.
 
 
 <p align="center">
