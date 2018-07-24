@@ -1,3 +1,5 @@
+import {setTypedStyle} from './CSSProvider';
+
 /**
  * Behaves the same as setTimeout except uses requestAnimationFrame() where possible for better performance
  * @param {function} fn The callback function
@@ -26,4 +28,12 @@ export const requestTimeout = function(fn, delay = 1) {
   };
 
   requestAnimationFrame(animationLoop);
+};
+
+export const hideElementToAnimate = ($el, animationFn, animationConfig) => {
+  setTypedStyle($el, 'display', 'inherit');
+  setTypedStyle($el, 'opacity', 0);
+  setTypedStyle($el, 'visibility', 'hidden');
+
+  requestTimeout(() => $el.animate(animationFn, animationConfig), 0);
 };
