@@ -1,6 +1,20 @@
 import {setTypedStyle, setTransition} from '../providers/CSSProvider';
 import {requestTimeout} from '../providers/animations';
 import {isNumber} from '../../isomorphic/nevinha-is';
+import {
+  flash,
+  bomb,
+  dance,
+  enterDownBounce,
+  enterLeftBounce,
+  enterRightBounce,
+  enterUpBounce,
+  journal,
+  jumpBounce,
+  pulse,
+  pulseSlow,
+  scaleBounce
+} from './animations/animations';
 
 const STICKY_MOTION = 'sticky';
 const FADE_OUT_MOTION = 'fadeOut';
@@ -48,6 +62,12 @@ export const setParallax = ($el, values) => {
 };
 
 export const definedMotionsProps = {
+  bomb,
+  dance,
+  enterDownBounce,
+  enterLeftBounce,
+  enterRightBounce,
+  enterUpBounce,
   fadeIn: {
     callFn: setFadeIn,
     values: {
@@ -72,9 +92,12 @@ export const definedMotionsProps = {
       }
     }
   },
+  flash,
   hide: {
     callFn: setHide
   },
+  journal,
+  jumpBounce,
   parallax: {
     callFn: setParallax,
     values: {
@@ -84,6 +107,9 @@ export const definedMotionsProps = {
       }
     }
   },
+  pulse,
+  pulseSlow,
+  scaleBounce,
   show: {
     callFn: setShow
   },

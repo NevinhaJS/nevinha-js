@@ -1,6 +1,6 @@
 {
 	"name": "nevinha-js",
-	"version": "0.3.3",
+	"version": "0.4.0",
 	"description": "Create static components with sexy animations",
 	"main": "dist/nevinha.cjs.js",
 	"module": "dist/nevinha.esm.js",
