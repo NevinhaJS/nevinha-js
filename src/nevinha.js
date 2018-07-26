@@ -3,5 +3,4 @@ import {render} from './dom/client/render';
 import NevinhaDOM from './dom/vdom';
 import {ParallaxProvider} from './motions/providers/parallaxProvider';
 
-export {NevinhaComponent, render, ParallaxProvider};
-export default NevinhaDOM;
+export {NevinhaComponent, render, ParallaxProvider, NevinhaDOM}
