@@ -12,7 +12,8 @@ const pulseKeyFrames = [
 
 const setPulseAnimation = ($el, values) => {
   const speed = getValue(values, 'speed', PULSE_MOTION) * 1000;
-  $el.animate(pulseKeyFrames, {
+
+  return $el.animate(pulseKeyFrames, {
     direction: 'alternate',
     duration: speed,
     easing: 'linear',

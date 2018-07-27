@@ -14,7 +14,8 @@ const pulseSlowKeyFrames = [
 
 const setPulseSlowAnimation = ($el, values) => {
   const speed = getValue(values, 'speed', PULSE_SLOW_MOTION) * 1000;
-  $el.animate(pulseSlowKeyFrames, {
+
+  return $el.animate(pulseSlowKeyFrames, {
     direction: 'alternate',
     duration: speed,
     easing: 'ease-in-out',
