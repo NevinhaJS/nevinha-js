@@ -42,6 +42,12 @@ export const removeTypedStyle = ($el, prop) => {
   $el.style.removeProperty(prop);
 };
 
+export const setVisibleState = ($el) => {
+  setTypedStyle($el, 'opacity', 1);
+  setTypedStyle($el, 'display', 'inherit');
+  setTypedStyle($el, 'visibility', 'visible');
+}
+
 /**
  * @param {HTMLNode} $el The element target
  * @param {string} prop the CSS attribute name
