@@ -8,6 +8,7 @@ import {flash} from './agreccives/flash-bang';
 import {scaleBounce} from './bounce/scale-bounce';
 import {dance} from './specials/dance';
 import {pulse} from './specials/pulse';
+import {rotateScale} from './specials/rotate-scale';
 import {pulseSlow} from './specials/pulse-slow';
 import {journal} from './specials/journal';
 
@@ -23,5 +24,6 @@ export {
   pulseSlow,
   journal,
   jumpBounce,
+  rotateScale,
   scaleBounce
 };

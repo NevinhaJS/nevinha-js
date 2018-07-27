@@ -13,6 +13,7 @@ import {
   jumpBounce,
   pulse,
   pulseSlow,
+  rotateScale,
   scaleBounce
 } from './animations/animations';
 
@@ -30,11 +31,13 @@ export const setFadeOut = ($el, values) => {
   const speed = getValue(values, 'speed', FADE_OUT_MOTION);
   const timingFn = getValue(values, 'timingFn', FADE_IN_MOTION);
 
-  requestTimeout(() => setTypedStyle($el, 'display', 'none'), speed * 1000);
-
+  setTypedStyle($el, 'display', 'inherit');
+  setTypedStyle($el, 'opacity', 1);
+  setTypedStyle($el, 'visibility', 'visible');
   setTransition($el, 'opacity', speed, timingFn);
 
-  requestTimeout(() => setTypedStyle($el, 'opacity', 0));
+  requestTimeout(() => setTypedStyle($el, 'opacity', 0), 100);
+  requestTimeout(() => setTypedStyle($el, 'display', 'none'), (speed * 1000) + 50);
 };
 
 export const setFadeIn = ($el, values) => {
@@ -43,9 +46,10 @@ export const setFadeIn = ($el, values) => {
 
   setTypedStyle($el, 'display', 'inherit');
   setTypedStyle($el, 'opacity', 0);
+  setTypedStyle($el, 'visibility', 'visible');
   setTransition($el, 'opacity', speed, timingFn);
 
-  requestTimeout(() => setTypedStyle($el, 'opacity', 1), 0);
+  requestTimeout(() => setTypedStyle($el, 'opacity', 1), 50);
 };
 
 export const setHide = $el => {
@@ -109,6 +113,7 @@ export const definedMotionsProps = {
   },
   pulse,
   pulseSlow,
+  rotateScale,
   scaleBounce,
   show: {
     callFn: setShow

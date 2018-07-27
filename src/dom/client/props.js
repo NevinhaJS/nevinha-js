@@ -83,7 +83,7 @@ export const updateProp = ($el, name, newVal, oldVal, parentComponent) => {
 
 export const updateProps = (
   $target,
-  newProps,
+  newProps = {},
   oldProps = {},
   parentComponent
 ) => {

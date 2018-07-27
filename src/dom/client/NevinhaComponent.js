@@ -10,10 +10,24 @@ class NevinhaComponent extends IsomorphicNevinhaComponent {
     super(props, children);
   }
 
-  setAnimation($el, config){
+  removeAnimation(ref){
+    if(!ref.animation.infinite){
+      ref.animation.config.finish();
+    }
+
+    ref.animation.config.cancel();
+
+    ref.animation = null;
+  }
+
+  setAnimation(ref, config){
     const {name, values} = config;
 
-    definedMotionsProps[name].callFn($el, values);
+    if(ref.animation){
+      this.removeAnimation(ref);
+    }
+
+    definedMotionsProps[name].callFn(ref.element, values, ref);
   }
 
   setState(states) {

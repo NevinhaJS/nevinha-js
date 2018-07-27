@@ -1,4 +1,6 @@
+import {addComponentContextAnimation} from '../../../providers/animations'
 import {getValue} from '../../motions-props';
+import {setVisibleState} from '../../../providers/CSSProvider';
 
 const PULSE_SLOW_MOTION = 'pulseSlow';
 const pulseSlowKeyFrames = [
@@ -12,15 +14,18 @@ const pulseSlowKeyFrames = [
   }
 ];
 
-const setPulseSlowAnimation = ($el, values) => {
-  const speed = getValue(values, 'speed', PULSE_SLOW_MOTION) * 1000;
+const setPulseSlowAnimation = ($el, values, contextRef) => {
+  setVisibleState($el);
 
-  return $el.animate(pulseSlowKeyFrames, {
+  const speed = getValue(values, 'speed', PULSE_SLOW_MOTION) * 1000;
+  const animation = $el.animate(pulseSlowKeyFrames, {
     direction: 'alternate',
     duration: speed,
     easing: 'ease-in-out',
     iterations: Infinity
   });
+
+  addComponentContextAnimation(animation, contextRef, true);
 };
 
 export const pulseSlow = {

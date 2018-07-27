@@ -1,4 +1,6 @@
 import {getValue} from '../../motions-props';
+import {addComponentContextAnimation} from '../../../providers/animations'
+import {setVisibleState} from '../../../providers/CSSProvider';
 
 const JUMP_BOUNCE_MOTION = 'jumpBounce';
 const jumpBounceKeyFrames = [
@@ -26,14 +28,17 @@ const jumpBounceKeyFrames = [
   }
 ];
 
-const setJumpBounce = ($el, values) => {
-  const speed = getValue(values, 'speed', JUMP_BOUNCE_MOTION) * 1000;
+const setJumpBounce = ($el, values, contextRef) => {
+  setVisibleState($el);
 
-  $el.animate(jumpBounceKeyFrames, {
+  const speed = getValue(values, 'speed', JUMP_BOUNCE_MOTION) * 1000;
+  const animation = $el.animate(jumpBounceKeyFrames, {
     duration: speed,
     easing: 'cubic-bezier(0.42, 0, 0.44, 1.21)',
     fill: 'forwards'
   });
+
+  addComponentContextAnimation(animation, contextRef)
 };
 
 export const jumpBounce = {

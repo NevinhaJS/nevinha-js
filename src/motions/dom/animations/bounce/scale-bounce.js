@@ -1,4 +1,6 @@
 import {getValue} from '../../motions-props';
+import {addComponentContextAnimation} from '../../../providers/animations'
+import {setVisibleState} from '../../../providers/CSSProvider';
 
 const SCALE_BOUNCE_MOTION = 'scaleBounce';
 const scaleBounceKeyFrames = [
@@ -22,14 +24,17 @@ const scaleBounceKeyFrames = [
   }
 ];
 
-const setScaleBounce = ($el, values) => {
-  const speed = getValue(values, 'speed', SCALE_BOUNCE_MOTION) * 1000;
+const setScaleBounce = ($el, values, contextRef) => {
+  setVisibleState($el);
 
-  return $el.animate(scaleBounceKeyFrames, {
+  const speed = getValue(values, 'speed', SCALE_BOUNCE_MOTION) * 1000;
+  const animation = $el.animate(scaleBounceKeyFrames, {
     duration: speed,
     easing: 'linear',
     fill: 'forwards'
   });
+
+  addComponentContextAnimation(animation, contextRef)
 };
 
 export const scaleBounce = {
