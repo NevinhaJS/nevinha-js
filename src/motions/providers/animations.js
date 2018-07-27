@@ -31,7 +31,7 @@ export const requestTimeout = function(fn, delay = 1) {
 };
 
 export const hideElementToAnimate = ($el, animationFn, animationConfig) => {
-  setTypedStyle($el, 'display', 'initial');
+  setTypedStyle($el, 'display', 'inherit');
   setTypedStyle($el, 'opacity', 0);
   setTypedStyle($el, 'visibility', 'hidden');
 

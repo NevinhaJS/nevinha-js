@@ -25,7 +25,7 @@ const scaleBounceKeyFrames = [
 const setScaleBounce = ($el, values) => {
   const speed = getValue(values, 'speed', SCALE_BOUNCE_MOTION) * 1000;
 
-  $el.animate(scaleBounceKeyFrames, {
+  return $el.animate(scaleBounceKeyFrames, {
     duration: speed,
     easing: 'linear',
     fill: 'forwards'

@@ -41,7 +41,7 @@ export const setFadeIn = ($el, values) => {
   const speed = getValue(values, 'speed', FADE_IN_MOTION);
   const timingFn = getValue(values, 'timingFn', FADE_IN_MOTION);
 
-  setTypedStyle($el, 'display', 'initial');
+  setTypedStyle($el, 'display', 'inherit');
   setTypedStyle($el, 'opacity', 0);
   setTransition($el, 'opacity', speed, timingFn);
 
@@ -53,7 +53,7 @@ export const setHide = $el => {
 };
 
 export const setShow = $el => {
-  setTypedStyle($el, 'display', 'initial');
+  setTypedStyle($el, 'display', 'inherit');
 };
 
 export const setParallax = ($el, values) => {
@@ -130,7 +130,7 @@ export const getDefaultValues = (values, motionName) => {
   return values;
 };
 
-export const getValue = (valueConfig, property, motionName) => {
+export const getValue = (valueConfig = {}, property, motionName) => {
   const propertyConfig = getDefaultValues(true, motionName)[property];
   const userValue = valueConfig[property];
 
