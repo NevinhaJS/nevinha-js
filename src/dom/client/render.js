@@ -54,9 +54,10 @@ export const diffDOM = {
 
   removeFromDiff: ($parent, _, __, index) => {
     $parent.removeChild($parent.childNodes[index]);
+    return index;
   },
 
-  replaceFromDiff: ($parent, newNode, _, parentComponent, index) => {
+  replaceFromDiff: ($parent, newNode, oldNode, parentComponent, index) => {
     $parent.replaceChild(
       createVirtualElement(newNode, {
         createInstance,

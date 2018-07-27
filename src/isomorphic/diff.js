@@ -10,35 +10,46 @@ export const updateElement = (
   newNode,
   index = 0
 ) => {
+  let newParentCompeonent = parentComponent;
+
   if (!oldNode && !newNode) return;
 
   if (newNode && typeof newNode.type == 'function') {
-    const {NewNodeComponent, OldNodeComponent} = updateComponentDiff(
-      newNode,
-      oldNode
-    );
+    const {NodeComponent, NodeComponentInstance} = updateComponentDiff(newNode);
 
-    newNode = NewNodeComponent;
-    oldNode = OldNodeComponent;
+    newNode = NodeComponent;
+
+    if(NodeComponentInstance) newParentCompeonent = NodeComponentInstance;
+  }
+
+  if (oldNode && typeof oldNode.type == 'function') {
+    const {NodeComponent} = updateComponentDiff(oldNode);
+
+    oldNode = NodeComponent;
   }
 
   if (!oldNode) {
-    addToDiff($parent, newNode, parentComponent);
+    addToDiff($parent, newNode, newParentCompeonent);
   } else if (!newNode) {
-    updateContext(parentComponent, oldNode);
+    updateContext(newParentCompeonent, oldNode);
     removeFromDiff($parent, newNode, oldNode, index);
+    return true;
   } else if (changed(newNode, oldNode)) {
-    updateContext(parentComponent, oldNode);
-    replaceFromDiff($parent, newNode, oldNode, parentComponent, index);
+    updateContext(newParentCompeonent, oldNode);
+    replaceFromDiff($parent, newNode, oldNode, newParentCompeonent, index);
   } else if (newNode.type) {
     const newLength = newNode.children.length;
     const oldLength = oldNode.children.length;
 
-    updatePropsFromDiff($parent, newNode, oldNode, parentComponent, index);
+    updatePropsFromDiff($parent, newNode, oldNode, newParentCompeonent, index);
 
     for (let i = 0; i < newLength || i < oldLength; i++) {
-      updateElement(
-        parentComponent,
+      //It's to check if the parentNode is will put back or not the old node
+      //Its to avoid null pointer in case of the newNode is smaller than the oldNode
+      if(!$parent.childNodes[index].childNodes[i] && oldLength > newLength) return;
+
+      const removedElment = updateElement(
+        newParentCompeonent,
         oldNode.children[i],
         {
           addToDiff,
@@ -50,47 +61,36 @@ export const updateElement = (
         newNode.children[i],
         i
       );
+
+      if(removedElment && oldLength > newLength){
+        i--;
+      }
     }
   }
 };
 
-const updateComponentDiff = (NewNodeComponent, OldNodeComponent) => {
-  if (isClass(NewNodeComponent.type)) {
-		const NewNodeInstance = new NewNodeComponent.type( // eslint-disable-line
-      NewNodeComponent.attributes,
-      NewNodeComponent.children
-    );
-		const oldNodeInstance = new OldNodeComponent.type( // eslint-disable-line
-      OldNodeComponent.attributes,
-      OldNodeComponent.children
+const updateComponentDiff = (NodeComponent) => {
+  let NodeComponentInstance;
+
+  if (isClass(NodeComponent.type)) {
+		NodeComponentInstance = new NodeComponent.type( // eslint-disable-line
+      NodeComponent.attributes,
+      NodeComponent.children
     );
 
-    NewNodeInstance.element = createVirtualElement(NewNodeComponent, {
+    NodeComponentInstance.element = createVirtualElement(NodeComponent, {
       createInstance,
       createTextNode,
-      parentComponent: NewNodeInstance
+      parentComponent: NodeComponentInstance
     });
-    oldNodeInstance.element = createVirtualElement(OldNodeComponent, {
-      createInstance,
-      createTextNode,
-      parentComponent: oldNodeInstance
-    });
-
-    NewNodeComponent = NewNodeInstance.render();
-    OldNodeComponent = oldNodeInstance.render();
+    NodeComponent = NodeComponentInstance.render();
   } else {
-    NewNodeComponent = Object.assign(
-      NewNodeComponent.type(NewNodeComponent.attributes, NewNodeComponent.children)
-    );
-    OldNodeComponent = Object.assign(
-      OldNodeComponent.type(OldNodeComponent.attributes, OldNodeComponent.children)
+    NodeComponent = Object.assign(
+      NodeComponent.type(NodeComponent.attributes, NodeComponent.children)
     );
   }
 
-  return {
-    NewNodeComponent,
-    OldNodeComponent
-  };
+  return {NodeComponent, NodeComponentInstance};
 };
 
 export const updateContext = (parentComponent, {attributes, children}) => {
