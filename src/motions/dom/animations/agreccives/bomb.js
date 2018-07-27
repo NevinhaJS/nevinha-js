@@ -1,4 +1,6 @@
 import {getValue} from '../../motions-props';
+import {addComponentContextAnimation} from '../../../providers/animations'
+import {setVisibleState} from '../../../providers/CSSProvider';
 
 const BOMB_MOTION = 'bomb';
 const bombKeyFrames = [
@@ -16,13 +18,17 @@ const bombKeyFrames = [
   }
 ];
 
-const setBombAnimation = ($el, values) => {
+const setBombAnimation = ($el, values, contextRef) => {
+  setVisibleState($el);
+
   const speed = getValue(values, 'speed', BOMB_MOTION) * 1000;
-  $el.animate(bombKeyFrames, {
+  const animation = $el.animate(bombKeyFrames, {
     duration: speed,
     easing: 'cubic-bezier(0, 0.93, 1, 1)',
     fill: 'forwards'
   });
+
+  addComponentContextAnimation(animation, contextRef);
 };
 
 export const bomb = {

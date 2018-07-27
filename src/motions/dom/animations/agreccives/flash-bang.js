@@ -1,4 +1,6 @@
 import {getValue} from '../../motions-props';
+import {addComponentContextAnimation} from '../../../providers/animations'
+import {setVisibleState} from '../../../providers/CSSProvider';
 
 const FLASH_MOTION = 'flash';
 const flashKeyFrames = {
@@ -6,12 +8,16 @@ const flashKeyFrames = {
   opacity: [0, 1, 0, 1, 1]
 };
 
-const setFlashAnimation = ($el, values) => {
+const setFlashAnimation = ($el, values, contextRef) => {
+  setVisibleState($el);
+
   const speed = getValue(values, 'speed', FLASH_MOTION) * 1000;
-  $el.animate(flashKeyFrames, {
+  const animation = $el.animate(flashKeyFrames, {
     duration: speed,
     easing: 'linear'
   });
+
+  addComponentContextAnimation(animation, contextRef);
 };
 
 export const flash = {

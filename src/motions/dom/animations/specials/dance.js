@@ -1,4 +1,6 @@
 import {getValue} from '../../motions-props';
+import {addComponentContextAnimation} from '../../../providers/animations'
+import {setVisibleState} from '../../../providers/CSSProvider';
 
 const DANCE_MOTION = 'dance';
 const danceKeyFrames = [
@@ -52,13 +54,17 @@ const danceKeyFrames = [
   }
 ];
 
-const setDanceAnimation = ($el, values) => {
+const setDanceAnimation = ($el, values, contextRef) => {
+  setVisibleState($el);
+
   const speed = getValue(values, 'speed', DANCE_MOTION) * 1000;
-  $el.animate(danceKeyFrames, {
+  const animation = $el.animate(danceKeyFrames, {
     duration: speed,
     easing: 'linear',
     fill: 'forwards'
   });
+
+  addComponentContextAnimation(animation, contextRef)
 };
 
 export const dance = {

@@ -1,4 +1,6 @@
 import {getValue} from '../../motions-props';
+import {addComponentContextAnimation} from '../../../providers/animations'
+import {setVisibleState} from '../../../providers/CSSProvider';
 
 const JOURNAL_MOTION = 'journal';
 const journalKeyFrames = [
@@ -14,13 +16,17 @@ const journalKeyFrames = [
   }
 ];
 
-const setJournalAnimation = ($el, values) => {
+const setJournalAnimation = ($el, values, contextRef) => {
+  setVisibleState($el);
+
   const speed = getValue(values, 'speed', JOURNAL_MOTION) * 1000;
-  $el.animate(journalKeyFrames, {
+  const animation = $el.animate(journalKeyFrames, {
     duration: speed,
     easing: 'linear',
     fill: 'forwards'
   });
+
+  addComponentContextAnimation(animation, contextRef)
 };
 
 export const journal = {

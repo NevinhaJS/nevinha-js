@@ -27,14 +27,14 @@ const enterLeftKeyFrames = [
   }
 ];
 
-const setEnterLeftBounce = ($el, values) => {
+const setEnterLeftBounce = ($el, values, contextRef) => {
   const speed = getValue(values, 'speed', ENTER_LEFT_MOTION) * 1000;
 
   hideElementToAnimate($el, enterLeftKeyFrames, {
     duration: speed,
     easing: 'linear',
     fill: 'forwards'
-  });
+  }, contextRef);
 };
 
 export const enterLeftBounce = {
