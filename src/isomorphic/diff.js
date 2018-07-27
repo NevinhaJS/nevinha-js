@@ -80,10 +80,10 @@ const updateComponentDiff = (NewNodeComponent, OldNodeComponent) => {
     OldNodeComponent = oldNodeInstance.render();
   } else {
     NewNodeComponent = Object.assign(
-      NewNodeComponent.type(NewNodeComponent.attributes)
+      NewNodeComponent.type(NewNodeComponent.attributes, NewNodeComponent.children)
     );
     OldNodeComponent = Object.assign(
-      OldNodeComponent.type(OldNodeComponent.attributes)
+      OldNodeComponent.type(OldNodeComponent.attributes, OldNodeComponent.children)
     );
   }
 
