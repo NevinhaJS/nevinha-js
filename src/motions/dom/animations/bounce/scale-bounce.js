@@ -1,5 +1,5 @@
 import {getValue} from '../../motions-props';
-import {addComponentContextAnimation} from '../../../providers/animations'
+import {addComponentContextAnimation} from '../../../providers/animations';
 import {setVisibleState} from '../../../providers/CSSProvider';
 
 const SCALE_BOUNCE_MOTION = 'scaleBounce';
@@ -34,7 +34,7 @@ const setScaleBounce = ($el, values, contextRef) => {
     fill: 'forwards'
   });
 
-  addComponentContextAnimation(animation, contextRef)
+  addComponentContextAnimation(animation, contextRef);
 };
 
 export const scaleBounce = {

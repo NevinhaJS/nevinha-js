@@ -1,5 +1,5 @@
 import {getValue} from '../../motions-props';
-import {addComponentContextAnimation} from '../../../providers/animations'
+import {addComponentContextAnimation} from '../../../providers/animations';
 import {setVisibleState} from '../../../providers/CSSProvider';
 
 const ROTATE_SCALE_MOTION = 'rotateScale';

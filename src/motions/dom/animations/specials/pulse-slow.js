@@ -1,4 +1,4 @@
-import {addComponentContextAnimation} from '../../../providers/animations'
+import {addComponentContextAnimation} from '../../../providers/animations';
 import {getValue} from '../../motions-props';
 import {setVisibleState} from '../../../providers/CSSProvider';
 

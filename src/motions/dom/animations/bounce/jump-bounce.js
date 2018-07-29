@@ -1,5 +1,5 @@
 import {getValue} from '../../motions-props';
-import {addComponentContextAnimation} from '../../../providers/animations'
+import {addComponentContextAnimation} from '../../../providers/animations';
 import {setVisibleState} from '../../../providers/CSSProvider';
 
 const JUMP_BOUNCE_MOTION = 'jumpBounce';
@@ -38,7 +38,7 @@ const setJumpBounce = ($el, values, contextRef) => {
     fill: 'forwards'
   });
 
-  addComponentContextAnimation(animation, contextRef)
+  addComponentContextAnimation(animation, contextRef);
 };
 
 export const jumpBounce = {

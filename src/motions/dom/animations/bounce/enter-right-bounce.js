@@ -30,11 +30,16 @@ const enterRightKeyFrames = [
 const setEnterRightBounce = ($el, values, contextRef) => {
   const speed = getValue(values, 'speed', ENTER_RIGHT_MOTION) * 1000;
 
-  hideElementToAnimate($el, enterRightKeyFrames, {
-    duration: speed,
-    easing: 'linear',
-    fill: 'forwards'
-  }, contextRef);
+  hideElementToAnimate(
+    $el,
+    enterRightKeyFrames,
+    {
+      duration: speed,
+      easing: 'linear',
+      fill: 'forwards'
+    },
+    contextRef
+  );
 };
 
 export const enterRightBounce = {
