@@ -16,6 +16,10 @@ export const isCustomProp = propName => {
   // if (propName == 'style') return true;
 };
 
+export const isSafari = ()=> /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === '[object SafariRemoteNotification]'; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification)); //eslint-disable-line
+
+export const isFirefox = typeof InstallTrigger !== 'undefined';
+
 export const hasCustomProp = (props = {}) => {
   return Object.keys(definedMotionsProps).filter(key => props[key]).length;
 };
