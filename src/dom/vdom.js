@@ -9,11 +9,11 @@
  *
  */
 /*eslint-disable */
-/** @jsx dom */
+/** @jsx NevinhaDOM */
 const NevinhaDOM = (type, attributes, ...args) => {
 	const children = args.length ? [].concat(...args) : [];
 	return {type, attributes: attributes || {}, children};
-}
+};
 /*eslint-enable */
 
 export default NevinhaDOM;

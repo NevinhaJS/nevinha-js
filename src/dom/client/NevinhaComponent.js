@@ -3,15 +3,17 @@ import {
   IsomorphicNevinhaComponent
 } from '../../isomorphic/isomorphic';
 import {diffDOM} from './client';
-import {definedMotionsProps} from '../../motions/dom/motions-props'
+import {definedMotionsProps} from '../../motions/dom/motions-props';
 
 class NevinhaComponent extends IsomorphicNevinhaComponent {
   constructor(props, children) {
     super(props, children);
   }
 
-  removeAnimation(ref){
-    if(!ref.animation.infinite){
+  removeAnimation(ref) {
+    if(!ref.animation) return;
+
+    if (!ref.animation.infinite) {
       ref.animation.config.finish();
     }
 
@@ -20,10 +22,10 @@ class NevinhaComponent extends IsomorphicNevinhaComponent {
     ref.animation = null;
   }
 
-  setAnimation(ref, config){
+  setAnimation(ref, config) {
     const {name, values} = config;
 
-    if(ref.animation){
+    if (ref.animation) {
       this.removeAnimation(ref);
     }
 

@@ -1,5 +1,5 @@
 import {getValue} from '../../motions-props';
-import {addComponentContextAnimation} from '../../../providers/animations'
+import {addComponentContextAnimation} from '../../../providers/animations';
 import {setVisibleState} from '../../../providers/CSSProvider';
 
 const JOURNAL_MOTION = 'journal';
@@ -26,7 +26,7 @@ const setJournalAnimation = ($el, values, contextRef) => {
     fill: 'forwards'
   });
 
-  addComponentContextAnimation(animation, contextRef)
+  addComponentContextAnimation(animation, contextRef);
 };
 
 export const journal = {

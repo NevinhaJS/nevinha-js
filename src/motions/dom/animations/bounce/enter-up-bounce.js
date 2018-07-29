@@ -30,11 +30,16 @@ const enterUpKeyFrames = [
 const setEnterUpBounce = ($el, values, contextRef) => {
   const speed = getValue(values, 'speed', ENTER_UP_MOTION) * 1000;
 
-  hideElementToAnimate($el, enterUpKeyFrames, {
-    duration: speed,
-    easing: 'linear',
-    fill: 'forwards'
-  }, contextRef);
+  hideElementToAnimate(
+    $el,
+    enterUpKeyFrames,
+    {
+      duration: speed,
+      easing: 'linear',
+      fill: 'forwards'
+    },
+    contextRef
+  );
 };
 
 export const enterUpBounce = {

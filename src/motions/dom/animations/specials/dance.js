@@ -1,5 +1,5 @@
 import {getValue} from '../../motions-props';
-import {addComponentContextAnimation} from '../../../providers/animations'
+import {addComponentContextAnimation} from '../../../providers/animations';
 import {setVisibleState} from '../../../providers/CSSProvider';
 
 const DANCE_MOTION = 'dance';
@@ -64,7 +64,7 @@ const setDanceAnimation = ($el, values, contextRef) => {
     fill: 'forwards'
   });
 
-  addComponentContextAnimation(animation, contextRef)
+  addComponentContextAnimation(animation, contextRef);
 };
 
 export const dance = {

@@ -37,7 +37,10 @@ export const setFadeOut = ($el, values) => {
   setTransition($el, 'opacity', speed, timingFn);
 
   requestTimeout(() => setTypedStyle($el, 'opacity', 0), 100);
-  requestTimeout(() => setTypedStyle($el, 'display', 'none'), (speed * 1000) + 50);
+  requestTimeout(
+    () => setTypedStyle($el, 'display', 'none'),
+    speed * 1000 + 100
+  );
 };
 
 export const setFadeIn = ($el, values) => {
@@ -49,7 +52,7 @@ export const setFadeIn = ($el, values) => {
   setTypedStyle($el, 'visibility', 'visible');
   setTransition($el, 'opacity', speed, timingFn);
 
-  requestTimeout(() => setTypedStyle($el, 'opacity', 1), 50);
+  requestTimeout(() => setTypedStyle($el, 'opacity', 1), 100);
 };
 
 export const setHide = $el => {
@@ -88,7 +91,7 @@ export const definedMotionsProps = {
     callFn: setFadeOut,
     values: {
       speed: {
-        defaultValue: 1,
+        defaultValue: 0.5,
         rulesFn: () => [isNumber]
       },
       timingFn: {
