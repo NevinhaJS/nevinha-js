@@ -14,19 +14,27 @@ const formatCSSValue = value => {
   return value;
 };
 
+const blackPropsList = (value) => {
+  if(value == 'sticky') return true;
+}
+
 /**
  * @param {HTMLNode} $el The element target
  * @param {string} prop the CSS attribute name
  * @param {any} value the value that will be attached on the elment
  */
 export const setTypedStyle = ($el, prop, value) => {
-  if (supportTypedOM) {
+  if (supportTypedOM()) {
     $el.attributeStyleMap.set(prop, formatCSSValue(value));
 
     return;
   }
 
-  return ($el.style.prop = value);
+  if(blackPropsList(value)){
+    $el.style[prop] = `-webkit-${value}`;
+  }
+
+  return $el.style[prop] = value;
 };
 
 /**
@@ -35,18 +43,18 @@ export const setTypedStyle = ($el, prop, value) => {
  * @param {any} value the value that will be attached on the elment
  */
 export const removeTypedStyle = ($el, prop) => {
-  if (supportTypedOM) {
+  if (supportTypedOM()) {
     return $el.attributeStyleMap.delete(prop);
   }
 
   $el.style.removeProperty(prop);
 };
 
-export const setVisibleState = ($el) => {
+export const setVisibleState = $el => {
   setTypedStyle($el, 'opacity', 1);
   setTypedStyle($el, 'display', 'inherit');
   setTypedStyle($el, 'visibility', 'visible');
-}
+};
 
 /**
  * @param {HTMLNode} $el The element target
