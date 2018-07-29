@@ -15,11 +15,13 @@ export const updateElement = (
   if (!oldNode && !newNode) return;
 
   if (newNode && typeof newNode.type == 'function') {
-    const {NodeComponent, NodeComponentInstance} = updateComponentDiff(newNode);
+    const {NodeComponent, NodeComponentInstance} = updateComponentDiff(
+      newNode
+    );
 
     newNode = NodeComponent;
 
-    if(NodeComponentInstance) newParentCompeonent = NodeComponentInstance;
+    if (NodeComponentInstance) newParentCompeonent = NodeComponentInstance;
   }
 
   if (oldNode && typeof oldNode.type == 'function') {
@@ -41,12 +43,22 @@ export const updateElement = (
     const newLength = newNode.children.length;
     const oldLength = oldNode.children.length;
 
-    updatePropsFromDiff($parent, newNode, oldNode, newParentCompeonent, index);
+    updatePropsFromDiff(
+      $parent,
+      newNode,
+      oldNode,
+      newParentCompeonent,
+      index
+    );
 
     for (let i = 0; i < newLength || i < oldLength; i++) {
       //It's to check if the parentNode is will put back or not the old node
       //Its to avoid null pointer in case of the newNode is smaller than the oldNode
-      if(!$parent.childNodes[index].childNodes[i] && oldLength > newLength) return;
+      if (
+        !$parent.childNodes[index].childNodes[i] &&
+				oldLength > newLength
+      )
+        return;
 
       const removedElment = updateElement(
         newParentCompeonent,
@@ -62,14 +74,14 @@ export const updateElement = (
         i
       );
 
-      if(removedElment && oldLength > newLength){
+      if (removedElment && oldLength > newLength) {
         i--;
       }
     }
   }
 };
 
-const updateComponentDiff = (NodeComponent) => {
+const updateComponentDiff = NodeComponent => {
   let NodeComponentInstance;
 
   if (isClass(NodeComponent.type)) {

@@ -28,11 +28,11 @@ export const setProp = ($el, name, value, parentComponent) => {
     return setBooleanProp($el, name, value);
   }
 
-  if (name == 'value') {
+  if (name === 'value') {
     return ($el.value = value);
   }
 
-  if (name == 'ref') {
+  if (name === 'ref') {
     return addContextRef(parentComponent, value, {
       element: $el
     });

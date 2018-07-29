@@ -30,22 +30,31 @@ export const requestTimeout = function(fn, delay = 1) {
   requestAnimationFrame(animationLoop);
 };
 
-export const hideElementToAnimate = ($el, animationFn, animationConfig, contextRef) => {
+export const hideElementToAnimate = (
+  $el,
+  animationFn,
+  animationConfig,
+  contextRef
+) => {
   setTypedStyle($el, 'display', 'inherit');
   setTypedStyle($el, 'opacity', 0);
   setTypedStyle($el, 'visibility', 'hidden');
 
   requestTimeout(() => {
-    const animation = $el.animate(animationFn, animationConfig)
+    const animation = $el.animate(animationFn, animationConfig);
     addComponentContextAnimation(animation, contextRef);
   }, 0);
 };
 
-export const addComponentContextAnimation = (animation, contextRef, infinite) => {
-  if(contextRef){
+export const addComponentContextAnimation = (
+  animation,
+  contextRef,
+  infinite
+) => {
+  if (contextRef) {
     contextRef.animation = {
       config: animation,
       infinite
-    }
-  };
-}
+    };
+  }
+};
