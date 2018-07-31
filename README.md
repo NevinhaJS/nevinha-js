@@ -1,7 +1,7 @@
 # NevinhaJS
 
 ## What's NevinhaJS?
-NevinhaJS is a component render based in [React](https://reactjs.org/) but beyond of static methods and component lifecycles (including state and props), we also have methods for make some animations and improve the UX.
+A component render as [React](https://reactjs.org/)  that goes beyond of static methods and component lifecycles, including state, props,  improving the way you make meaningful animations and providing an amazing experience.
 
 
 > 🚨 Importants Notes
