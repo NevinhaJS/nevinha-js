@@ -6,8 +6,21 @@ import {diffDOM} from './client';
 import {definedMotionsProps} from '../../motions/dom/motions-props';
 
 class NevinhaComponent extends IsomorphicNevinhaComponent {
-  constructor(props, children) {
-    super(props, children);
+  constructor(props, context) {
+    super(props, context);
+  }
+
+  getElementIndex(){
+    const parentNode = this.getParentNode();
+    return Array.prototype.slice.call(parentNode.childNodes).indexOf(this.element);
+  }
+
+  getParentNode(){
+    let parentNode = this.element.parentNode;
+
+    if(!parentNode) parentNode = this.parentNode;
+
+    return parentNode;
   }
 
   removeAnimation(ref) {
@@ -36,12 +49,14 @@ class NevinhaComponent extends IsomorphicNevinhaComponent {
     const currentElement = this.render();
 
     Object.keys(states).map(key => (this.state[key] = states[key]));
+
     updateElement(
       this,
       currentElement,
       diffDOM,
-      this.element.parentNode,
-      this.render()
+      this.getParentNode(),
+      this.render(),
+      this.getElementIndex()
     );
   }
 }
