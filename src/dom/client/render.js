@@ -1,6 +1,5 @@
 import {setProps, updateProps} from './props';
 import {createVirtualElement} from '../../isomorphic/isomorphic';
-
 /**
  * @param {NevinhaClass} component The instance that should rerender.
  * @param {htmlNode} $node The node where the component will be attached
@@ -42,14 +41,14 @@ export const createInstance = (nodeType, props, children, parentComponent) => {
 };
 
 export const diffDOM = {
-  addToDiff: ($parent, newNode, parentComponent) => {
-    $parent.appendChild(
+  addToDiff: ($parent, newNode, parentComponent, index) => {
+    $parent.insertBefore(
       createVirtualElement(newNode, {
         createInstance,
         createTextNode,
         parentComponent
-      })
-    );
+      }),
+      $parent.childNodes[index]);
   },
 
   removeFromDiff: ($parent, _, __, index) => {

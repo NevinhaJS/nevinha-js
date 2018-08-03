@@ -1,4 +1,4 @@
-import {isEvent} from './events';
+import {isEvent, formatEventName} from './events';
 import {isCustomProp} from '../../isomorphic/nevinha-is';
 import {removeContextRef, addContextRef} from '../../isomorphic/diff';
 import {definedMotionsProps} from '../../motions/dom/motions-props';
@@ -7,8 +7,7 @@ import {setTypedStyle} from '../../motions/providers/CSSProvider';
 export const setProps = ($el, props, parentComponent) => {
   Object.keys(props).forEach(prop => {
     if (isEvent(prop)) {
-      const eventName = prop.split('on')[1].toLowerCase();
-      $el.addEventListener(eventName, props[prop]);
+      $el.addEventListener(formatEventName(prop), props[prop]);
     } else {
       setProp($el, prop, props[prop], parentComponent);
     }
@@ -69,6 +68,9 @@ export const removeProp = ($el, name, value) => {
 
 export const updateProp = ($el, name, newVal, oldVal, parentComponent) => {
   if (isEvent(name)) {
+    // const eventName = formatEventName(name);
+    // $el.removeEventListener(eventName, oldVal);
+    // $el.addEventListener(eventName, newVal);
     return;
   }
 
