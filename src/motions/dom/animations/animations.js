@@ -12,6 +12,7 @@ import {rotateScale} from './specials/rotate-scale';
 import {pulseSlow} from './specials/pulse-slow';
 import {journal} from './specials/journal';
 import {flipLeftBounce} from './perspective/flip-left-bounce';
+import {flipRightBounce} from './perspective/flip-right-bounce';
 
 export {
   bomb,
@@ -24,6 +25,7 @@ export {
   pulse,
   pulseSlow,
   flipLeftBounce,
+  flipRightBounce,
   journal,
   jumpBounce,
   rotateScale,
