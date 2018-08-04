@@ -9,6 +9,7 @@ import {
   enterLeftBounce,
   enterRightBounce,
   enterUpBounce,
+  flipLeftBounce,
   journal,
   jumpBounce,
   pulse,
@@ -100,6 +101,7 @@ export const definedMotionsProps = {
     }
   },
   flash,
+  flipLeftBounce,
   hide: {
     callFn: setHide
   },
