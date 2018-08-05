@@ -2,19 +2,21 @@ import {setTypedStyle, setTransition} from '../providers/CSSProvider';
 import {requestTimeout} from '../providers/animations';
 import {isNumber} from '../../isomorphic/nevinha-is';
 import {
-  flash,
   bomb,
   dance,
   enterDownBounce,
   enterLeftBounce,
   enterRightBounce,
   enterUpBounce,
+  flash,
+  flipLeftBounce,
+  flipRightBounce,
   journal,
   jumpBounce,
   pulse,
   pulseSlow,
   rotateScale,
-  scaleBounce
+  scaleBounce,
 } from './animations/animations';
 
 const STICKY_MOTION = 'sticky';
@@ -100,6 +102,8 @@ export const definedMotionsProps = {
     }
   },
   flash,
+  flipLeftBounce,
+  flipRightBounce,
   hide: {
     callFn: setHide
   },
