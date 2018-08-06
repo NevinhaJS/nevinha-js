@@ -6,19 +6,19 @@ const MOTION = 'flipRightBounce';
 const keyframes = [
   {
     opacity: 0,
-    transform: 'rotateY(-70deg)',
+    transform: 'rotateY(-70deg)'
   },
   {
     opacity: 0.5,
-    transform: 'rotateY(5deg)',
+    transform: 'rotateY(5deg)'
   },
   {
     opacity: 0.8,
-    transform: 'rotateY(-20deg)',
+    transform: 'rotateY(-20deg)'
   },
   {
     opacity: 1,
-    transform: 'rotateY(0deg)',
+    transform: 'rotateY(0deg)'
   }
 ];
 
