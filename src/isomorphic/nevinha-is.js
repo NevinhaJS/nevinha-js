@@ -23,7 +23,7 @@ export const isSafari = () =>
 	})(
 	  !window['safari'] ||
 			(typeof safari !== 'undefined' && safari.pushNotification) //eslint-disable-line
-	); 
+	);
 
 export const isFirefox = typeof InstallTrigger !== 'undefined';
 

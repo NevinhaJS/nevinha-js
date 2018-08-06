@@ -52,7 +52,6 @@ export const removeTypedStyle = ($el, prop) => {
 
 export const setVisibleState = $el => {
   setTypedStyle($el, 'opacity', 1);
-  setTypedStyle($el, 'display', 'inherit');
   setTypedStyle($el, 'visibility', 'visible');
 };
 
