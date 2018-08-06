@@ -14,9 +14,9 @@ const formatCSSValue = value => {
   return value;
 };
 
-const blackPropsList = (value) => {
-  if(value == 'sticky') return true;
-}
+const blackPropsList = value => {
+  if (value == 'sticky') return true;
+};
 
 /**
  * @param {HTMLNode} $el The element target
@@ -30,11 +30,11 @@ export const setTypedStyle = ($el, prop, value) => {
     return;
   }
 
-  if(blackPropsList(value)){
+  if (blackPropsList(value)) {
     $el.style[prop] = `-webkit-${value}`;
   }
 
-  return $el.style[prop] = value;
+  return ($el.style[prop] = value);
 };
 
 /**
