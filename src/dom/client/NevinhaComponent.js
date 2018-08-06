@@ -10,21 +10,23 @@ class NevinhaComponent extends IsomorphicNevinhaComponent {
     super(props, context);
   }
 
-  getElementIndex(){
+  getElementIndex() {
     const parentNode = this.getParentNode();
-    return Array.prototype.slice.call(parentNode.childNodes).indexOf(this.element);
+    return Array.prototype.slice
+      .call(parentNode.childNodes)
+      .indexOf(this.element);
   }
 
-  getParentNode(){
+  getParentNode() {
     let parentNode = this.element.parentNode;
 
-    if(!parentNode) parentNode = this.parentNode;
+    if (!parentNode) parentNode = this.parentNode;
 
     return parentNode;
   }
 
   removeAnimation(ref) {
-    if(!ref.animation) return;
+    if (!ref.animation) return;
 
     if (!ref.animation.infinite) {
       ref.animation.config.finish();

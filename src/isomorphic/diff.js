@@ -14,7 +14,12 @@ export const updateElement = (
   if (!oldNode && !newNode) return;
 
   if (oldNode && typeof oldNode.type == 'function') {
-    const {NodeComponent} = updateComponentDiff(oldNode, parentComponent, $parent.childNodes[index], true);
+    const {NodeComponent} = updateComponentDiff(
+      oldNode,
+      parentComponent,
+      $parent.childNodes[index],
+      true
+    );
     oldNode = NodeComponent;
   }
 
@@ -59,8 +64,8 @@ export const updateElement = (
 
       if (
         !$parent.childNodes[index] ||
-        (!$parent.childNodes[index].childNodes[i] &&
-				oldLength > newLength)
+				(!$parent.childNodes[index].childNodes[i] &&
+					oldLength > newLength)
       )
         return;
 
@@ -85,32 +90,31 @@ export const updateElement = (
   }
 };
 
-
 const updateComponentDiff = (NodeComponent, parentComponent, $node, isOld) => {
   let NodeComponentInstance;
 
   if (isClass(NodeComponent.type)) {
     let context = {};
 
-    if(parentComponent && parentComponent.context.store) {
+    if (parentComponent && parentComponent.context.store) {
       context = parentComponent.context;
     }
 
-    context.name = NodeComponent.type.name
+    context.name = NodeComponent.type.name;
 
-    if($node && $node.data && $node.data[NodeComponent.type.name]){
+    if ($node && $node.data && $node.data[NodeComponent.type.name]) {
       $node.data[NodeComponent.type.name].componentUnmount();
       $node.data[NodeComponent.type.name] = null;
     }
 
-    NodeComponentInstance = new NodeComponent.type( // eslint-disable-line
+		NodeComponentInstance = new NodeComponent.type( // eslint-disable-line
       NodeComponent.attributes,
       context
     );
 
     NodeComponentInstance.children = NodeComponent.children;
 
-    if(NodeComponentInstance.getChildContext) {
+    if (NodeComponentInstance.getChildContext) {
       NodeComponentInstance.context = {
         ...NodeComponentInstance.getChildContext(),
         ...NodeComponentInstance.context
@@ -124,10 +128,10 @@ const updateComponentDiff = (NodeComponent, parentComponent, $node, isOld) => {
       parentComponent: NodeComponentInstance
     });
 
-    if($node) {
+    if ($node) {
       NodeComponentInstance.parentNode = $node.parentNode;
 
-      if($node.data) {
+      if ($node.data) {
         $node.data[NodeComponent.type.name] = NodeComponentInstance;
       }
     }
@@ -139,8 +143,13 @@ const updateComponentDiff = (NodeComponent, parentComponent, $node, isOld) => {
     );
   }
 
-  if(typeof NodeComponent.type != 'string') {
-    const updatedComponent = updateComponentDiff(NodeComponent, parentComponent, $node, isOld);
+  if (typeof NodeComponent.type != 'string') {
+    const updatedComponent = updateComponentDiff(
+      NodeComponent,
+      parentComponent,
+      $node,
+      isOld
+    );
 
     NodeComponent = updatedComponent.NodeComponent;
     NodeComponentInstance = updatedComponent.NodeComponentInstance;
@@ -148,7 +157,6 @@ const updateComponentDiff = (NodeComponent, parentComponent, $node, isOld) => {
 
   return {NodeComponent, NodeComponentInstance};
 };
-
 
 export const updateContext = (parentComponent, {attributes, children}) => {
   if (!attributes) return;
@@ -177,7 +185,7 @@ export const addContextRef = (parentComponent, ref, value) => {
  * @param {object} node2 Another jsx node to compare changes
  */
 export const changed = (node1, node2) => {
-  if(
+  if (
     typeof node1 !== typeof node2 ||
 		(typeof node1 === 'string' && node1 !== node2) ||
 		node1.type !== node2.type

@@ -16,7 +16,7 @@ import {
   pulse,
   pulseSlow,
   rotateScale,
-  scaleBounce,
+  scaleBounce
 } from './animations/animations';
 
 const STICKY_MOTION = 'sticky';

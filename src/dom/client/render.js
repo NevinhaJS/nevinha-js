@@ -48,7 +48,8 @@ export const diffDOM = {
         createTextNode,
         parentComponent
       }),
-      $parent.childNodes[index]);
+      $parent.childNodes[index]
+    );
   },
 
   removeFromDiff: ($parent, _, __, index) => {

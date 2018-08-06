@@ -29,5 +29,5 @@ export {
   pulse,
   pulseSlow,
   rotateScale,
-  scaleBounce,
+  scaleBounce
 };

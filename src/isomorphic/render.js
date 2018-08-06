@@ -5,7 +5,7 @@ export const createVirtualElement = (
   node,
   {createTextNode, createInstance, parentComponent, $node}
 ) => {
-  if(!node) return;
+  if (!node) return;
 
   const {type, attributes, children} = node;
 
@@ -16,35 +16,35 @@ export const createVirtualElement = (
   if (typeof type == 'function' && type.prototype.render) {
     let context = {};
 
-    if(parentComponent && parentComponent.context.store) {
+    if (parentComponent && parentComponent.context.store) {
       context = parentComponent.context;
     }
 
-    const instance = new type(attributes, context); // eslint-disable-line
+		const instance = new type(attributes, context); // eslint-disable-line
     instance.children = children;
 
-    if(instance.getChildContext) {
+    if (instance.getChildContext) {
       instance.context = {
         ...instance.getChildContext(),
         ...instance.context
-      }
+      };
     }
 
     const createdElement = createVirtualElement(instance.render(), {
+      $node,
       createInstance,
       createTextNode,
-      parentComponent: instance,
-      $node
+      parentComponent: instance
     });
 
     instance.element = createdElement;
     instance.parentNode = instance.element.parentNode;
 
-    if(!instance.element.data){
+    if (!instance.element.data) {
       instance.element.data = {};
     }
 
-    if($node) instance.componentUnmount();
+    if ($node) instance.componentUnmount();
 
     instance.element.data[type.name] = instance;
 
