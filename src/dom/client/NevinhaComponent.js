@@ -52,13 +52,17 @@ class NevinhaComponent extends IsomorphicNevinhaComponent {
 
     Object.keys(states).map(key => (this.state[key] = states[key]));
 
+    const index = this.getElementIndex();
+
+    if(index === -1) return;
+
     updateElement(
       this,
       currentElement,
       diffDOM,
       this.getParentNode(),
       this.render(),
-      this.getElementIndex()
+      index
     );
   }
 }
