@@ -7,6 +7,8 @@ class IsomorphicNevinhaComponent {
     this.componentWillMount();
   }
 
+  created() {}
+
   componentWillMount() {}
 
   componentDidMount() {}

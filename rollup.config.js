@@ -15,6 +15,7 @@ export default {
     uglify({}, minify),
     filesize()
   ],
+  sourceMap: true,
   targets: [
     { dest: pkg.main, format: 'cjs' },
     { dest: pkg.module, format: 'es' }

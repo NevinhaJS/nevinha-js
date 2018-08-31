@@ -12,6 +12,7 @@ class NevinhaComponent extends IsomorphicNevinhaComponent {
 
   getElementIndex() {
     const parentNode = this.getParentNode();
+
     return Array.prototype.slice
       .call(parentNode.childNodes)
       .indexOf(this.element);
