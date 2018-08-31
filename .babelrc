@@ -2,11 +2,11 @@
 {
 	"env": {
 		"test": {
-		  "presets": ["es2015", "stage-0"]
+		  "presets": ["env"]
 		},
 		"dev": {
       "presets": [
-        ["es2015",{"modules": false}]
+        ["env", {"modules": false}]
       ],
       "plugins": ["external-helpers",
         "transform-object-rest-spread"]
