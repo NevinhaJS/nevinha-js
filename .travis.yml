@@ -1,0 +1,15 @@
+branches:
+  - master
+
+cache:
+  yarn: true
+
+install:
+  - yarn
+
+language: node_js
+node_js:
+  - "9.10.0"
+
+script:
+  - npm run test
