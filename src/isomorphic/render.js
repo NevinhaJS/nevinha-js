@@ -48,6 +48,10 @@ export const createVirtualElement = (
 
     instance.element.data[type.name] = instance;
 
+    if(instance.created){
+      instance.created();
+    }
+
     return createdElement;
   }
 

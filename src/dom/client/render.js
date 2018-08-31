@@ -1,7 +1,7 @@
 import {setProps, updateProps} from './props';
 import {createVirtualElement} from '../../isomorphic/isomorphic';
 /**
- * @param {NevinhaClass} component The instance that should rerender.
+ * @param {NevinhaClass} component The instance of the NevinhaJS application wich should rerender.
  * @param {htmlNode} $node The node where the component will be attached
  */
 export const render = (Component, $node) => {
