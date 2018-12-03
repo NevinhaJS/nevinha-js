@@ -1,14 +1,14 @@
 # NevinhaJS
 
 ## What's NevinhaJS?
-A component render as [React](https://reactjs.org/)  that goes beyond of static methods and component lifecycles, including state, props,  improving the way you make meaningful animations and providing an amazing experience.
+A component render as [React](https://reactjs.org/) that goes beyond static methods and component lifecycles, including state, props and improving the way you make meaningful animations, providing an amazing experience.
 
 
 > 🚨 Importants Notes
 > - **NevinhaJS uses the virtual DOM as base of  their diff.**
-> - **NevinhaJS uses CSS Typed OM API, wich improves arround 30% of the performance of your browser css manipulations. You can see more details in this [google article](https://developers.google.com/web/updates/2018/03/cssom#customprops)**
+> - **NevinhaJS uses CSS Typed OM API, which improves arround 30% the performance of your browser's css manipulations. You can learn more in this [google article](https://developers.google.com/web/updates/2018/03/cssom#customprops)**
 
-Actually we're implementing new features and animations to make this framework more powerful and sexy for using it in your projects.
+Actually, we're implementing new features and animations to make this framework more powerful and sexy for your projects.
 
 
 <p align="center">
@@ -16,13 +16,13 @@ Actually we're implementing new features and animations to make this framework m
   <a href="https://github.com/NevinhaJS/nevinha-js"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="GitHub last commit"></a>
   <a href="https://github.com/NevinhaJS/nevinha-js/"><img src="https://img.shields.io/github/license/NevinhaJS/nevinha-js.svg" alt="License"></a>
 </p>
-<p align="center">Create components fast for <b>motion</b> animation.</p>
+<p align="center">Quickly create components for <b>motion</b> animation.</p>
 
 
 > 🤔 **What's Missing?**
 > - Web Animations API
 > - Parallax animations
-> - Include animations of [All Animation CSS3](http://all-animation.github.io)
+> - Include [All Animations CSS3](http://all-animation.github.io)
 > - Unit tests
 > - Pre-commit tasks
 > - ...
@@ -31,16 +31,16 @@ Actually we're implementing new features and animations to make this framework m
 
 - [Install](#install)
 - [Usage](#usage)
-- [Contribute](#contribute)
+- [Contributing](#contributing)
 - [Examples](https://github.com/NevinhaJS/nevinha-js-examples)
 - [License](#license)
 
 ## Install
-We'll put NevinhaJS in [NPM](https://www.npmjs.com/) as son as possible.
+We'll put NevinhaJS in [NPM](https://www.npmjs.com/) as soon as possible.
 
 ## Usage
 
-With a bundler module as a [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/), use:
+With a bundler like [rollup](https://rollupjs.org/) or [webpack](https://webpack.js.org/), use:
 
 ```javascript
 // using ES6 modules
@@ -82,11 +82,11 @@ class App extends NevinhaComponent {
 }
 ```
 
-You can see more details of how to use NevinhaJs in the [Nevinha Js Examples repo](https://github.com/NevinhaJS/nevinha-js-examples)
+You can learn more about how to use NevinhaJs in the [NevinhaJs Examples repo](https://github.com/NevinhaJS/nevinha-js-examples)
 
-**We are taking care with the browser animations performance and we are allways following the google developers documentation and developers group to ensure our performance compatibility**
+**We're taking special care with browser animation performance. We're always following google developer's documentation and developers group to ensure performance compatibility**
 
-## Contribute
+## Contributing
 
 First of all, thank you for your contribution. If you want to contribute, feel free to search for [open issues](../../issues) or our [project roadmap](../..//projects/1), we have a lot of work to do, and of course we'll need you.
 
