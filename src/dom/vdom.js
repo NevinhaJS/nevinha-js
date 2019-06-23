@@ -12,6 +12,9 @@
 /** @jsx NevinhaDOM */
 const NevinhaDOM = (type, attributes, ...args) => {
 	const children = args.length ? [].concat(...args) : [];
+
+	console.log({type, attributes: attributes || {}, children});
+
 	return {type, attributes: attributes || {}, children};
 };
 /*eslint-enable */

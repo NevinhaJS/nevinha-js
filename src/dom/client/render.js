@@ -68,13 +68,7 @@ export const diffDOM = {
     );
   },
 
-  updatePropsFromDiff: (
-    $parent,
-    newNode,
-    oldNode,
-    parentComponent,
-    index
-  ) => {
+  updatePropsFromDiff: ($parent, newNode, oldNode, parentComponent, index) => {
     updateProps(
       $parent.childNodes[index],
       newNode.attributes,

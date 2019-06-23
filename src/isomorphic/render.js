@@ -20,7 +20,7 @@ export const createVirtualElement = (
       context = parentComponent.context;
     }
 
-		const instance = new type(attributes, context); // eslint-disable-line
+    const instance = new type(attributes, context); // eslint-disable-line
     instance.children = children;
 
     if (instance.getChildContext) {
@@ -48,7 +48,7 @@ export const createVirtualElement = (
 
     instance.element.data[type.name] = instance;
 
-    if(instance.created){
+    if (instance.created) {
       instance.created();
     }
 

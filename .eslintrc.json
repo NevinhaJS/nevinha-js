@@ -20,15 +20,10 @@
 		"ecmaVersion": 2017,
 		"sourceType": "module"
 	},
-	"plugins": [
-		"react"
-	],
+	"plugins": ["react"],
 	"rules": {
 		"comma-dangle": 0,
-		"eol-last": [
-			2,
-			"never"
-		],
+		"eol-last": [2, "always"],
 		"indent": [2, 2],
 		"max-len": 0,
 		"new-cap": [

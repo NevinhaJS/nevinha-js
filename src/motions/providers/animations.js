@@ -8,13 +8,12 @@ import {setTypedStyle} from './CSSProvider';
 export const requestTimeout = function(fn, delay = 1) {
   if (
     !window.requestAnimationFrame &&
-		!window.webkitRequestAnimationFrame &&
-		!(
-		  window.mozRequestAnimationFrame &&
-			window.mozCancelRequestAnimationFrame
-		) && // Firefox 5 ships without cancel support
-		!window.oRequestAnimationFrame &&
-		!window.msRequestAnimationFrame
+    !window.webkitRequestAnimationFrame &&
+    !(
+      window.mozRequestAnimationFrame && window.mozCancelRequestAnimationFrame
+    ) && // Firefox 5 ships without cancel support
+    !window.oRequestAnimationFrame &&
+    !window.msRequestAnimationFrame
   )
     return window.setTimeout(fn, delay);
 

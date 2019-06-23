@@ -55,7 +55,7 @@ class NevinhaComponent extends IsomorphicNevinhaComponent {
 
     const index = this.getElementIndex();
 
-    if(index === -1) return;
+    if (index === -1) return;
 
     updateElement(
       this,

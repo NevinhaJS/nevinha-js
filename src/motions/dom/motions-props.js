@@ -130,8 +130,7 @@ export const definedMotionsProps = {
 };
 
 export const getDefaultValues = (values, motionName) => {
-  if (typeof values !== 'object')
-    return definedMotionsProps[motionName].values;
+  if (typeof values !== 'object') return definedMotionsProps[motionName].values;
 
   return values;
 };

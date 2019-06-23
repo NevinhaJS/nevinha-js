@@ -95,13 +95,7 @@ export const updateProps = (
   }
 
   Object.keys(props).forEach(name => {
-    updateProp(
-      $target,
-      name,
-      newProps[name],
-      oldProps[name],
-      parentComponent
-    );
+    updateProp($target, name, newProps[name], oldProps[name], parentComponent);
   });
 };
 

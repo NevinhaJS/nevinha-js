@@ -50,13 +50,7 @@ export const updateElement = (
     const newLength = newNode.children.length;
     const oldLength = oldNode.children.length;
 
-    updatePropsFromDiff(
-      $parent,
-      newNode,
-      oldNode,
-      newParentCompeonent,
-      index
-    );
+    updatePropsFromDiff($parent, newNode, oldNode, newParentCompeonent, index);
 
     for (let i = 0; i < newLength || i < oldLength; i++) {
       //It's to check if the parentNode is will put back or not the old node
@@ -64,8 +58,7 @@ export const updateElement = (
 
       if (
         !$parent.childNodes[index] ||
-				(!$parent.childNodes[index].childNodes[i] &&
-					oldLength > newLength)
+        (!$parent.childNodes[index].childNodes[i] && oldLength > newLength)
       )
         return;
 
@@ -107,7 +100,7 @@ const updateComponentDiff = (NodeComponent, parentComponent, $node, isOld) => {
       $node.data[NodeComponent.type.name] = null;
     }
 
-		NodeComponentInstance = new NodeComponent.type( // eslint-disable-line
+    NodeComponentInstance = new NodeComponent.type( // eslint-disable-line
       NodeComponent.attributes,
       context
     );
@@ -187,8 +180,8 @@ export const addContextRef = (parentComponent, ref, value) => {
 export const changed = (node1, node2) => {
   if (
     typeof node1 !== typeof node2 ||
-		(typeof node1 === 'string' && node1 !== node2) ||
-		node1.type !== node2.type
+    (typeof node1 === 'string' && node1 !== node2) ||
+    node1.type !== node2.type
   ) {
     return true;
   }
